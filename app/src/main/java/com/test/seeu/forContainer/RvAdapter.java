@@ -54,7 +54,7 @@ public class RvAdapter extends RecyclerView.Adapter<RvAdapter.ViewHolder> {
                 .load(mImage.get(position))
                 .into(holder.imgContainer);
         holder.txtName.setText(mNames.get(position));
-        holder.txtAutor.setText(mAutors.get(position));
+        holder.txtAuthor.setText(mAutors.get(position));
         holder.txtDetails.setText(mDetails.get(position));
     }
 
@@ -67,7 +67,7 @@ public class RvAdapter extends RecyclerView.Adapter<RvAdapter.ViewHolder> {
 
         ImageView imgContainer;
         TextView txtName;
-        TextView txtAutor;
+        TextView txtAuthor;
         TextView txtDetails;
 
         ConstraintLayout parent_layout;
@@ -75,7 +75,7 @@ public class RvAdapter extends RecyclerView.Adapter<RvAdapter.ViewHolder> {
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             imgContainer = itemView.findViewById(R.id.imgContainer);
-            txtAutor = itemView.findViewById(R.id.txtAvtor);
+            txtAuthor = itemView.findViewById(R.id.txtAvtor);
             txtName = itemView.findViewById(R.id.txtName);
             txtDetails = itemView.findViewById(R.id.txtDetails);
             parent_layout = itemView.findViewById(R.id.parent_layout);
