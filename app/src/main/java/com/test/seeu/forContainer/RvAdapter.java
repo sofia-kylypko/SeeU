@@ -22,7 +22,7 @@ public class RvAdapter extends RecyclerView.Adapter<RvAdapter.ViewHolder> {
     // А потом вместо массивов будем заполнять из Json базу данных SQLite
     private ArrayList<String> mImage = new ArrayList<>();
     private ArrayList<String> mNames = new ArrayList<>();
-    private ArrayList<String> mAutors = new ArrayList<>();
+    private ArrayList<String> mAuthors = new ArrayList<>();
     private ArrayList<String> mDetails = new ArrayList<>();
     private ArrayList<Integer> mAttract = new ArrayList<>();
 
@@ -31,7 +31,7 @@ public class RvAdapter extends RecyclerView.Adapter<RvAdapter.ViewHolder> {
     public RvAdapter(Context Context, ArrayList<String> Image, ArrayList<String> Names, ArrayList<String> Authors, ArrayList<String> Details, ArrayList<Integer> Attract) {
         mImage = Image;
         mNames = Names;
-        mAutors = Authors;
+        mAuthors = Authors;
         mDetails = Details;
         mAttract = Attract;
         mContext = Context;
@@ -54,7 +54,7 @@ public class RvAdapter extends RecyclerView.Adapter<RvAdapter.ViewHolder> {
                 .load(mImage.get(position))
                 .into(holder.imgContainer);
         holder.txtName.setText(mNames.get(position));
-        holder.txtAuthor.setText(mAutors.get(position));
+        holder.txtAuthor.setText(mAuthors.get(position));
         holder.txtDetails.setText(mDetails.get(position));
     }
 
