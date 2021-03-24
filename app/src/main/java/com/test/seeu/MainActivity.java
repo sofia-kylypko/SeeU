@@ -23,11 +23,24 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         btnConnectCamera = findViewById(R.id.btnConnectCamera);
         btnConnectCamera.setOnClickListener(v -> {
-
-            camera.checkPermissionCamera();
+            if (hasCameraPermission()) {
+                enableCamera();
+            } else {
+                requestPermission();
+            }
 
         });
     }
+    private void requestPermission() {
+        ActivityCompat.requestPermissions(this, CAMERA_PERMISSION, CAMERA_REQUEST_CODE);
+    }
+    private void enableCamera() {
+        Intent intent = new Intent(this, CameraActivity.class);
+        startActivity(intent);
 
+    }
+    private boolean hasCameraPermission() {
+        return ContextCompat.checkSelfPermission(this, Manifest.permission.CAMERA) == PackageManager.PERMISSION_GRANTED;
+    }
 //
 }

@@ -22,7 +22,7 @@ public class Camera extends AppCompatActivity {
         if (hasCameraPermission(context)) {
             enableCamera(context);
         } else {
-    requestPermission(context);
+            requestPermission(context);
         }
     }
 
