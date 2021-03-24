@@ -36,7 +36,7 @@ public class MainActivity extends AppCompatActivity {
     }
     private void enableCamera() {
         Intent intent = new Intent(this, CameraActivity.class);
-        startActivity(intent);
+        startActivity(intent);// тут вылет
 
     }
     private boolean hasCameraPermission() {
