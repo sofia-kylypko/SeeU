@@ -1,7 +1,6 @@
 package com.test.seeu;
 
 import android.content.ContentValues;
-import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.AsyncTask;
 import android.os.Build;
@@ -14,9 +13,9 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.viewpager.widget.ViewPager;
 
 import com.google.android.material.tabs.TabLayout;
-import com.test.seeu.Fragments.ArchitectureFragment;
+import com.test.seeu.ArchitectureFragment.ArchitectureFragment;
 import com.test.seeu.Fragments.MyViewPagerAdapter;
-import com.test.seeu.Fragments.PaintingFragment;
+import com.test.seeu.PaintingFragment.PaintingFragment;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -25,7 +24,6 @@ import org.json.JSONObject;
 import java.io.IOException;
 import java.net.InetAddress;
 import java.net.URL;
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Random;
 
@@ -33,74 +31,17 @@ import static com.test.seeu.NetworkUtils.getResponseFromUrl;
 
 public class MainActivity extends AppCompatActivity {
 
-    TabLayout tabLayout;
-    ViewPager containerLay;
-    MyViewPagerAdapter adapter;
+    private TabLayout tabLayout;
+    private ViewPager containerLay;
+    private MyViewPagerAdapter adapter;
 
-    DBHelper dbHelper;
-    SQLiteDatabase sqLiteDatabase;
+    private DBHelper dbHelper;
+    private SQLiteDatabase sqLiteDatabase;
 
     private static long resultOp;
 
-    Button btnSearch;
-    Button btnUpdate;
+    private Button btnUpdate;
     public static EditText etSearch;
-
-    public static ArrayList<String> mImagePaint = new ArrayList<>();
-    public static ArrayList<String> mNamesPaint = new ArrayList<>();
-    public static ArrayList<String> mAuthorsPaint = new ArrayList<>();
-    public static ArrayList<String> mDetailsPaint = new ArrayList<>();
-    public static ArrayList<Integer> mAttractPaint = new ArrayList<>();
-
-    public static ArrayList<String> mImageArch = new ArrayList<>();
-    public static ArrayList<String> mNamesArch = new ArrayList<>();
-    public static ArrayList<String> mAuthorsArch = new ArrayList<>();
-    public static ArrayList<String> mDetailsArch = new ArrayList<>();
-    public static ArrayList<Integer> mAttractArch = new ArrayList<>();
-
-    // получаем данные из SQLite и записываем их в Массив
-    public void sqliteToArray() {
-        sqLiteDatabase = dbHelper.getWritableDatabase();
-
-        // строим SQL-запрос
-        String selection = DBHelper.KEY_NAME+ " LIKE ?";
-        String[] selectionArgs = new String[] { "%" + etSearch.getText().toString() + "%"};
-
-        Cursor cursor = sqLiteDatabase.query(DBHelper.TABLE_ATTRACTIONS,
-                null,
-                selection,
-                selectionArgs,
-                null,
-                null,
-                null);
-
-        if (cursor.moveToFirst()) {
-            // index_____ - это номер столбца в таблице
-            int indexImage = cursor.getColumnIndex(DBHelper.KEY_IMAGE);
-            int indexName = cursor.getColumnIndex(DBHelper.KEY_NAME);
-            int indexAuthor = cursor.getColumnIndex(DBHelper.KEY_AUTHOR);
-            int indexDetails = cursor.getColumnIndex(DBHelper.KEY_DETAILS);
-            int indexAttract = cursor.getColumnIndex(DBHelper.KEY_ATTRACT);
-
-            while (cursor.moveToNext()) {
-                if (cursor.getInt(indexAttract)==0) {
-                    mImagePaint.add(cursor.getString(indexImage));
-                    mNamesPaint.add(cursor.getString(indexName));
-                    mAuthorsPaint.add(cursor.getString(indexAuthor));
-                    mDetailsPaint.add(cursor.getString(indexDetails));
-                    mAttractPaint.add(cursor.getInt(indexAttract));
-                } else if (cursor.getInt(indexAttract)==1) {
-                    mImageArch.add(cursor.getString(indexImage));
-                    mNamesArch.add(cursor.getString(indexName));
-                    mAuthorsArch.add(cursor.getString(indexAuthor));
-                    mDetailsArch.add(cursor.getString(indexDetails));
-                    mAttractArch.add(cursor.getInt(indexAttract));
-                }
-            }
-        }
-
-//        initRV(); // запуск RecyclerView
-    }
 
     // ОТДЕЛЬНЫЙ ПОТОК
     // Класс для выноса в отдельный поток задачи Update Базы данных
@@ -115,7 +56,6 @@ public class MainActivity extends AppCompatActivity {
                 e.printStackTrace();
             }
             return response;
-
         }
 
         @RequiresApi(api = Build.VERSION_CODES.KITKAT)
@@ -150,15 +90,12 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
         dbHelper = new DBHelper(this);
-
-        btnSearch = findViewById(R.id.btnSearch);
         etSearch = findViewById(R.id.etSearch);
         btnUpdate = findViewById(R.id.btnUpdate);
 
@@ -171,15 +108,6 @@ public class MainActivity extends AppCompatActivity {
                     new UpdateDB().execute(generateURL); // запуск задачи в отдельном потоке
                 }
             }
-        });
-
-        btnSearch.setOnClickListener(v -> {
-            mImagePaint.clear();
-            mNamesPaint.clear();
-            mAuthorsPaint.clear();
-            mDetailsPaint .clear();
-
-            sqliteToArray();
         });
 
         adapter = new MyViewPagerAdapter(getSupportFragmentManager(), Arrays.asList(new PaintingFragment(), new ArchitectureFragment()));
@@ -200,12 +128,4 @@ public class MainActivity extends AppCompatActivity {
             return false;
         }
     }
-
-//    // запуск RecyclerView
-//    public void initRV() {
-//        RecyclerView recyclerView = findViewById(R.id.rv);
-//        RvAdapter rvAdapter = new RvAdapter(this, mImagePaint, mNamesPaint, mAuthorsPaint, mDetailsPaint, mAttractPaint );
-//        recyclerView.setAdapter(rvAdapter);
-//        recyclerView.setLayoutManager(new LinearLayoutManager(this));
-//    }
 }
