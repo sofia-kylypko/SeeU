@@ -1,12 +1,13 @@
 package com.test.seeu;
 
 import android.content.ContentValues;
+import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Bundle;
 import android.widget.Button;
-import android.widget.EditText;
+import android.widget.SearchView;
 
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
@@ -16,6 +17,8 @@ import com.google.android.material.tabs.TabLayout;
 import com.test.seeu.ArchitectureFragment.ArchitectureFragment;
 import com.test.seeu.Fragments.MyViewPagerAdapter;
 import com.test.seeu.PaintingFragment.PaintingFragment;
+import com.test.seeu.PaintingFragment.PaintingModel;
+import com.test.seeu.PaintingFragment.RecyclerPaintingAdapter;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -24,7 +27,9 @@ import org.json.JSONObject;
 import java.io.IOException;
 import java.net.InetAddress;
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 import java.util.Random;
 
 import static com.test.seeu.NetworkUtils.getResponseFromUrl;
@@ -33,7 +38,7 @@ public class MainActivity extends AppCompatActivity {
 
     private TabLayout tabLayout;
     private ViewPager containerLay;
-    private MyViewPagerAdapter adapter;
+    private MyViewPagerAdapter adapterFragment;
 
     private DBHelper dbHelper;
     private SQLiteDatabase sqLiteDatabase;
@@ -41,7 +46,6 @@ public class MainActivity extends AppCompatActivity {
     private static long resultOp;
 
     private Button btnUpdate;
-    public static EditText etSearch;
 
     // ОТДЕЛЬНЫЙ ПОТОК
     // Класс для выноса в отдельный поток задачи Update Базы данных
@@ -96,8 +100,13 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         dbHelper = new DBHelper(this);
-        etSearch = findViewById(R.id.etSearch);
         btnUpdate = findViewById(R.id.btnUpdate);
+
+        adapterFragment = new MyViewPagerAdapter(getSupportFragmentManager(), Arrays.asList(new PaintingFragment(), new ArchitectureFragment()));
+        containerLay = findViewById(R.id.containerLay);
+        containerLay.setAdapter(adapterFragment);
+        tabLayout = findViewById(R.id.tabLayout);
+        tabLayout.setupWithViewPager(containerLay);
 
         btnUpdate.setOnClickListener(v -> {
             if (!isInternetAvailable()) {
@@ -109,12 +118,6 @@ public class MainActivity extends AppCompatActivity {
                 }
             }
         });
-
-        adapter = new MyViewPagerAdapter(getSupportFragmentManager(), Arrays.asList(new PaintingFragment(), new ArchitectureFragment()));
-        containerLay = findViewById(R.id.containerLay);
-        containerLay.setAdapter(adapter);
-        tabLayout = findViewById(R.id.tabLayout);
-        tabLayout.setupWithViewPager(containerLay);
     }
 
     // метод для проверки на предмет подключения устройства к интернету

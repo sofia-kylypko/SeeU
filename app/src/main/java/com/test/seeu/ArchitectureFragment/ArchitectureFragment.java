@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.SearchView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -14,6 +15,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.test.seeu.DBHelper;
+import com.test.seeu.PaintingFragment.PaintingModel;
 import com.test.seeu.R;
 
 import java.util.ArrayList;
@@ -26,6 +28,7 @@ public class ArchitectureFragment extends Fragment {
     private ArrayList<ArchitectureModel> architectureList;
     SQLiteDatabase sqLiteDatabase;
     DBHelper dbHelper;
+    private SearchView searchView2;
 
     @Nullable
     @Override
@@ -37,6 +40,22 @@ public class ArchitectureFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+
+        searchView2 = view.findViewById(R.id.searchView2);
+        searchView2.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+
+            @Override
+            public boolean onQueryTextSubmit(String s) {
+                return false;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String newText) {
+                adapter.setArchitectureList(filter(newText));
+                return false;
+            }
+        });
+
         recyclerView = view.findViewById(R.id.ArchitectureRecyclerView);
         initRecyclerView();
         adapter.setArchitectureList(sqliteToArray());
@@ -80,4 +99,13 @@ public class ArchitectureFragment extends Fragment {
         return architectureList;
     }
 
+    private List<ArchitectureModel> filter(String query) {
+        ArrayList<ArchitectureModel> temp = new ArrayList<>();
+        for (ArchitectureModel model: architectureList) {
+            if (model.getName().toLowerCase().contains(query.toLowerCase())) {
+                temp.add(model);
+            }
+        }
+        return temp;
+    }
 }
