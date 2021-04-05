@@ -4,9 +4,9 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.view.LayoutInflater;
-import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.SearchView;
 
 import androidx.annotation.NonNull;
@@ -16,7 +16,6 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.test.seeu.DBHelper;
-import com.test.seeu.MainActivity;
 import com.test.seeu.R;
 
 import java.util.ArrayList;
@@ -24,12 +23,14 @@ import java.util.List;
 
 public class PaintingFragment extends Fragment {
 
+    private ArrayList<PaintingModel> paintingList;
+    private SearchView searchView;
+    private Button btnGalleryPaint;
+
     RecyclerView recyclerView;
     RecyclerPaintingAdapter adapterRv;
-    private ArrayList<PaintingModel> paintingList;
     SQLiteDatabase sqLiteDatabase;
     DBHelper dbHelper;
-    private SearchView searchView;
 
     @Nullable
     @Override
@@ -41,6 +42,8 @@ public class PaintingFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+
+        btnGalleryPaint = view.findViewById(R.id.btnGalleryArchitecture);
 
         searchView = view.findViewById(R.id.searchView);
         searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {

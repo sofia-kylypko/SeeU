@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.SearchView;
 
 import androidx.annotation.NonNull;
@@ -15,7 +16,6 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.test.seeu.DBHelper;
-import com.test.seeu.PaintingFragment.PaintingModel;
 import com.test.seeu.R;
 
 import java.util.ArrayList;
@@ -23,12 +23,14 @@ import java.util.List;
 
 public class ArchitectureFragment extends Fragment {
 
+    private ArrayList<ArchitectureModel> architectureList;
+    private SearchView searchView2;
+    private Button btnGalleryArchitecture;
+
     RecyclerView recyclerView;
     RecyclerArchitectureAdapter adapter;
-    private ArrayList<ArchitectureModel> architectureList;
     SQLiteDatabase sqLiteDatabase;
     DBHelper dbHelper;
-    private SearchView searchView2;
 
     @Nullable
     @Override
@@ -40,6 +42,8 @@ public class ArchitectureFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+
+        btnGalleryArchitecture = view.findViewById(R.id.btnGalleryArchitecture);
 
         searchView2 = view.findViewById(R.id.searchView2);
         searchView2.setOnQueryTextListener(new SearchView.OnQueryTextListener() {

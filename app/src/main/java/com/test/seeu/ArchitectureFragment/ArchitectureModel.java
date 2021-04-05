@@ -1,6 +1,7 @@
 package com.test.seeu.ArchitectureFragment;
 
 public class ArchitectureModel {
+
     private String name;
     private String imageURL;
     private String author;
