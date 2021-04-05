@@ -20,7 +20,7 @@ public class Camera extends AppCompatActivity {
 
     public void checkPermissionCamera() {
         if (hasCameraPermission(context)) {
-            enableCamera(context);
+            //enableCamera(context);
         } else {
             requestPermission(context);
         }
@@ -30,11 +30,11 @@ public class Camera extends AppCompatActivity {
         ActivityCompat.requestPermissions(context, CAMERA_PERMISSION, CAMERA_REQUEST_CODE);
     }
 
-    private void enableCamera(Activity context) {
-        Intent intent = new Intent(context, CameraActivity.class);
-        startActivity(intent);
+   // private void enableCamera(Activity context) {
+       // Intent intent = new Intent(context, CameraActivity.class);
+      //  startActivity(intent);
 
-    }
+    //}
 
     private boolean hasCameraPermission(Activity context) {
         return ContextCompat.checkSelfPermission(context, Manifest.permission.CAMERA) == PackageManager.PERMISSION_GRANTED;

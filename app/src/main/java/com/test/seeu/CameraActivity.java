@@ -52,7 +52,7 @@ public class CameraActivity extends AppCompatActivity  {
         previewView = findViewById(R.id.previewView);
         cameraProviderFuture = ProcessCameraProvider.getInstance(this);
         textView = findViewById(R.id.orientation);
-        captureImage = findViewById(R.id.captureImage);
+       //0 captureImage = findViewById(R.id.captureImage);
 
     /*    captureImage.setOnClickListener(v->{
             ImageCapture imageCapture =
