@@ -1,4 +1,4 @@
-package com.test.seeu.ArchitectureFragment;
+package com.test.seeu.ui.adapters;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -12,6 +12,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 import com.test.seeu.R;
+import com.test.seeu.data.models.ArchitectureModel;
 
 import java.util.List;
 
