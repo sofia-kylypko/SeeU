@@ -1,4 +1,4 @@
-package com.test.seeu;
+package com.test.seeu.ui.activities;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -11,7 +11,10 @@ import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-public class SplashActivity extends AppCompatActivity {
+import com.test.seeu.R;
+import com.test.seeu.ui.base.BaseActivity;
+
+public class SplashActivity extends BaseActivity {
 
     Animation top, bottom;
     ImageView logo;
@@ -21,7 +24,6 @@ public class SplashActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.splash);
 
         top = AnimationUtils.loadAnimation(this, R.anim.top);

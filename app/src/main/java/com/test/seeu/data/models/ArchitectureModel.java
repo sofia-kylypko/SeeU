@@ -1,13 +1,13 @@
-package com.test.seeu.PaintingFragment;
+package com.test.seeu.data.models;
 
-public class PaintingModel {
+public class ArchitectureModel {
 
     private String name;
     private String imageURL;
     private String author;
     private String details;
 
-    public PaintingModel(String name, String imageURL, String author, String details) {
+    public ArchitectureModel(String name, String imageURL, String author, String details) {
         this.name = name;
         this.imageURL = imageURL;
         this.author = author;

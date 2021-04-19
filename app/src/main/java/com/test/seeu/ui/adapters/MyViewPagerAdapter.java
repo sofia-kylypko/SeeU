@@ -1,4 +1,4 @@
-package com.test.seeu.Fragments;
+package com.test.seeu.ui.adapters;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;

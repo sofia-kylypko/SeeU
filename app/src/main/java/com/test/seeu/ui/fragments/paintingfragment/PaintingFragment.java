@@ -1,8 +1,8 @@
-package com.test.seeu.PaintingFragment;
+package com.test.seeu.ui.fragments.paintingfragment;
 
-import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,13 +15,17 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.test.seeu.DBHelper;
+import com.google.firebase.firestore.DocumentChange;
 import com.test.seeu.R;
+import com.test.seeu.data.FirebaseHelper;
+import com.test.seeu.data.models.PaintingModel;
+import com.test.seeu.ui.adapters.RecyclerPaintingAdapter;
+import com.test.seeu.ui.base.BaseFragment;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class PaintingFragment extends Fragment {
+public class PaintingFragment extends BaseFragment {
 
     private ArrayList<PaintingModel> paintingList;
     private SearchView searchView;
@@ -29,8 +33,6 @@ public class PaintingFragment extends Fragment {
 
     RecyclerView recyclerView;
     RecyclerPaintingAdapter adapterRv;
-    SQLiteDatabase sqLiteDatabase;
-    DBHelper dbHelper;
 
     @Nullable
     @Override
@@ -62,50 +64,35 @@ public class PaintingFragment extends Fragment {
 
         recyclerView = view.findViewById(R.id.PaintingRecyclerView);
         initRecyclerView();
-        adapterRv.setPrintingList(sqliteToArray());
+
+    }
+
+    private void listenData() {
+        FirebaseHelper.getInstance().getData().addSnapshotListener((value, error) -> {
+            if (error != null) {
+                Log.w("Firebase", "listen:error", error);
+                return;
+            }
+            ArrayList<PaintingModel> tmp = new ArrayList();
+            for (DocumentChange dc : value.getDocumentChanges()) {
+                tmp.add(dc.getDocument().toObject(PaintingModel.class));
+            }
+            paintingList = tmp;
+            adapterRv.setPrintingList(paintingList);
+        });
     }
 
     private void initRecyclerView() {
-        adapterRv = new RecyclerPaintingAdapter(this.getContext());
+        adapterRv = new RecyclerPaintingAdapter();
         recyclerView.setAdapter(adapterRv);
         recyclerView.setLayoutManager(new LinearLayoutManager(this.getContext()));
+        listenData();
     }
 
-    // получаем данные из SQLite и записываем их в Массив
-    public List<PaintingModel> sqliteToArray() {
-        dbHelper = new DBHelper(this.getContext());
-        paintingList = new ArrayList<>();
-        sqLiteDatabase = dbHelper.getWritableDatabase();
-
-        // строим SQL-запрос
-        String selection = DBHelper.KEY_ATTRACT + "= 0";
-
-        Cursor cursor = sqLiteDatabase.query(DBHelper.TABLE_ATTRACTIONS,
-                null,
-                selection,
-                null,
-                null,
-                null,
-                null);
-
-        if (cursor.moveToFirst()) {
-            // index_____ - это номер столбца в таблице
-            int indexImage = cursor.getColumnIndex(DBHelper.KEY_IMAGE);
-            int indexName = cursor.getColumnIndex(DBHelper.KEY_NAME);
-            int indexAuthor = cursor.getColumnIndex(DBHelper.KEY_AUTHOR);
-            int indexDetails = cursor.getColumnIndex(DBHelper.KEY_DETAILS);
-            int indexAttract = cursor.getColumnIndex(DBHelper.KEY_ATTRACT);
-
-            while (cursor.moveToNext()) {
-                paintingList.add(new PaintingModel(cursor.getString(indexName), cursor.getString(indexImage), cursor.getString(indexAuthor), cursor.getString(indexDetails)));
-            }
-        }
-        return paintingList;
-    }
 
     private List<PaintingModel> filter(String query) {
         ArrayList<PaintingModel> temp = new ArrayList<>();
-        for (PaintingModel model: paintingList) {
+        for (PaintingModel model : paintingList) {
             if (model.getName().toLowerCase().contains(query.toLowerCase())) {
                 temp.add(model);
             }
