@@ -1,6 +1,6 @@
 package com.test.seeu.ui.adapters;
 
-import android.content.Context;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,17 +12,15 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 import com.test.seeu.R;
+import com.test.seeu.data.FirebaseHelper;
 import com.test.seeu.data.models.ArchitectureModel;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class RecyclerArchitectureAdapter extends RecyclerView.Adapter<RecyclerArchitectureAdapter.ArchitectureViewHolder> {
-    private List<ArchitectureModel> architectureList;
-    Context context;
 
-    public RecyclerArchitectureAdapter(Context context) {
-        this.context = context;
-    }
+    private List<ArchitectureModel> architectureList = new ArrayList();
 
     public void setArchitectureList(List<ArchitectureModel> architectureList) {
         this.architectureList = architectureList;
@@ -31,14 +29,14 @@ public class RecyclerArchitectureAdapter extends RecyclerView.Adapter<RecyclerAr
 
     @NonNull
     @Override
-    public ArchitectureViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public RecyclerArchitectureAdapter.ArchitectureViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.container, parent, false);
-        ArchitectureViewHolder holder = new ArchitectureViewHolder(view);
+        RecyclerArchitectureAdapter.ArchitectureViewHolder holder = new RecyclerArchitectureAdapter.ArchitectureViewHolder(view);
         return holder;
     }
 
     @Override
-    public void onBindViewHolder(ArchitectureViewHolder holder, int position) {
+    public void onBindViewHolder(RecyclerArchitectureAdapter.ArchitectureViewHolder holder, int position) {
         holder.onBind(architectureList.get(position));
     }
 
@@ -65,11 +63,15 @@ public class RecyclerArchitectureAdapter extends RecyclerView.Adapter<RecyclerAr
         public void onBind(ArchitectureModel architectureModel) {
             txtName.setText(architectureModel.getName());
             txtAuthor.setText(architectureModel.getAuthor());
-            txtDetails.setText(architectureModel.getDetails());
-            Glide.with(context)
-                    .asBitmap()
-                    .load(architectureModel.getImageURL())
-                    .into(imgPainting);
+            txtDetails.setText(architectureModel.getPreviewInfo());
+            FirebaseHelper.getInstance()
+                    .getReference(architectureModel.getPhoto())
+                    .getDownloadUrl()
+                    .addOnSuccessListener(uri -> Glide.with(imgPainting.getContext())
+                            .asBitmap()
+                            .load(uri)
+                            .into(imgPainting))
+                    .addOnFailureListener(e -> Log.e("Firebase storage:",e.getLocalizedMessage()));
         }
     }
 }

@@ -3,15 +3,20 @@ package com.test.seeu.data.models;
 public class ArchitectureModel {
 
     private String name;
-    private String imageURL;
+    private String photo;
     private String author;
-    private String details;
+    private String previewInfo;
+    private String mainInfo;
 
-    public ArchitectureModel(String name, String imageURL, String author, String details) {
+    public ArchitectureModel() {
+    }
+
+    public ArchitectureModel(String name, String photo, String author, String previewInfo, String mainInfo) {
         this.name = name;
-        this.imageURL = imageURL;
+        this.photo = photo;
         this.author = author;
-        this.details = details;
+        this.previewInfo = previewInfo;
+        this.mainInfo = mainInfo;
     }
 
     public String getName() {
@@ -22,12 +27,12 @@ public class ArchitectureModel {
         this.name = name;
     }
 
-    public String getImageURL() {
-        return imageURL;
+    public String getPhoto() {
+        return photo;
     }
 
-    public void setImageURL(String imageURL) {
-        this.imageURL = imageURL;
+    public void setPhoto(String photo) {
+        this.photo = photo;
     }
 
     public String getAuthor() {
@@ -38,11 +43,11 @@ public class ArchitectureModel {
         this.author = author;
     }
 
-    public String getDetails() {
-        return details;
+    public String getPreviewInfo() {
+        return previewInfo;
     }
 
-    public void setDetails(String details) {
-        this.details = details;
+    public void setPreviewInfo(String previewInfo) {
+        this.previewInfo = previewInfo;
     }
 }

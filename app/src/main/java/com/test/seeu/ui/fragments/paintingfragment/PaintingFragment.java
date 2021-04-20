@@ -1,6 +1,5 @@
 package com.test.seeu.ui.fragments.paintingfragment;
 
-import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -11,7 +10,6 @@ import android.widget.SearchView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -29,7 +27,7 @@ public class PaintingFragment extends BaseFragment {
 
     private ArrayList<PaintingModel> paintingList;
     private SearchView searchView;
-    private Button btnGalleryPaint;
+    private Button btnCameraPaint;
 
     RecyclerView recyclerView;
     RecyclerPaintingAdapter adapterRv;
@@ -45,7 +43,7 @@ public class PaintingFragment extends BaseFragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        btnGalleryPaint = view.findViewById(R.id.btnGalleryArchitecture);
+        btnCameraPaint = view.findViewById(R.id.btnCameraArch);
 
         searchView = view.findViewById(R.id.searchView);
         searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
@@ -57,7 +55,7 @@ public class PaintingFragment extends BaseFragment {
 
             @Override
             public boolean onQueryTextChange(String newText) {
-                adapterRv.setPrintingList(filter(newText));
+                adapterRv.setPaintingList(filter(newText));
                 return false;
             }
         });
@@ -68,7 +66,7 @@ public class PaintingFragment extends BaseFragment {
     }
 
     private void listenData() {
-        FirebaseHelper.getInstance().getData().addSnapshotListener((value, error) -> {
+        FirebaseHelper.getInstance().getData("arts").addSnapshotListener((value, error) -> {
             if (error != null) {
                 Log.w("Firebase", "listen:error", error);
                 return;
@@ -78,7 +76,7 @@ public class PaintingFragment extends BaseFragment {
                 tmp.add(dc.getDocument().toObject(PaintingModel.class));
             }
             paintingList = tmp;
-            adapterRv.setPrintingList(paintingList);
+            adapterRv.setPaintingList(paintingList);
         });
     }
 
