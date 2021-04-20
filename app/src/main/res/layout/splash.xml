@@ -11,12 +11,12 @@
 
     <ImageView
         android:id="@+id/logo1"
-        android:layout_width="414dp"
-        android:layout_height="373dp"
+        android:layout_width="458dp"
+        android:layout_height="414dp"
 
-        android:layout_marginTop="96dp"
+        android:layout_marginTop="72dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.666"
+        app:layout_constraintHorizontal_bias="0.51"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/logo1" />
