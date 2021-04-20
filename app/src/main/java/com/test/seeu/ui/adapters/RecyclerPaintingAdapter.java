@@ -20,10 +20,10 @@ import java.util.List;
 
 public class RecyclerPaintingAdapter extends RecyclerView.Adapter<RecyclerPaintingAdapter.PrintingViewHolder> {
 
-    private List<PaintingModel> printingList = new ArrayList();
+    private List<PaintingModel> paintingList = new ArrayList();
 
-    public void setPrintingList(List<PaintingModel> printingList) {
-        this.printingList = printingList;
+    public void setPaintingList(List<PaintingModel> paintingList) {
+        this.paintingList = paintingList;
         notifyDataSetChanged();
     }
 
@@ -37,12 +37,12 @@ public class RecyclerPaintingAdapter extends RecyclerView.Adapter<RecyclerPainti
 
     @Override
     public void onBindViewHolder(PrintingViewHolder holder, int position) {
-        holder.onBind(printingList.get(position));
+        holder.onBind(paintingList.get(position));
     }
 
     @Override
     public int getItemCount() {
-        return printingList.size();
+        return paintingList.size();
     }
 
     public class PrintingViewHolder extends RecyclerView.ViewHolder {
@@ -72,7 +72,6 @@ public class RecyclerPaintingAdapter extends RecyclerView.Adapter<RecyclerPainti
                             .load(uri)
                             .into(imgPainting))
             .addOnFailureListener(e -> Log.e("Firebase storage:",e.getLocalizedMessage()));
-
         }
     }
 }

@@ -31,8 +31,8 @@ public class FirebaseHelper implements IDataHelper {
     }
 
     @Override
-    public CollectionReference getData() {
-        return db.collection("arts");
+    public CollectionReference getData(String a) {
+        return db.collection(a);
     }
 
     @Override

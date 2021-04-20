@@ -20,12 +20,6 @@ public class MainActivity extends BaseActivity {
     private ViewPager containerLay;
     private MyViewPagerAdapter adapterFragment;
 
-
-    private static long resultOp;
-
-    private Button btnUpdate;
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
