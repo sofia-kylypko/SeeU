@@ -38,7 +38,7 @@ public class SplashActivity extends BaseActivity {
         logoName.setAnimation(bottom);
 
 
-
+// переход
         new Handler().postDelayed(() -> {
                 startActivity (new Intent (SplashActivity.this, MainActivity.class));
             finish();
