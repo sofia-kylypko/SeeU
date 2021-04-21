@@ -28,7 +28,7 @@ public class SplashActivity extends AppCompatActivity {
         bottom = AnimationUtils.loadAnimation(this, R.anim.bottom);
 
 
-        logo = findViewById(R.id.logo1);
+        logo = findViewById(R.id.logo);
         logoName = findViewById(R.id.logoName);
 
 

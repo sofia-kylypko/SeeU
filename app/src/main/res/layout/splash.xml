@@ -10,7 +10,7 @@
 
 
     <ImageView
-        android:id="@+id/logo1"
+        android:id="@+id/logo"
         android:layout_width="458dp"
         android:layout_height="414dp"
 
