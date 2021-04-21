@@ -1,6 +1,6 @@
-package com.test.seeu.PaintingFragment;
+package com.test.seeu.ui.adapters;
 
-import android.content.Context;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,20 +12,18 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 import com.test.seeu.R;
+import com.test.seeu.data.FirebaseHelper;
+import com.test.seeu.data.models.PaintingModel;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class RecyclerPaintingAdapter extends RecyclerView.Adapter<RecyclerPaintingAdapter.PrintingViewHolder> {
 
-    private List<PaintingModel> printingList;
-    Context context;
+    private List<PaintingModel> paintingList = new ArrayList();
 
-    public RecyclerPaintingAdapter(Context context) {
-        this.context = context;
-    }
-
-    public void setPrintingList(List<PaintingModel> printingList) {
-        this.printingList = printingList;
+    public void setPaintingList(List<PaintingModel> paintingList) {
+        this.paintingList = paintingList;
         notifyDataSetChanged();
     }
 
@@ -39,12 +37,12 @@ public class RecyclerPaintingAdapter extends RecyclerView.Adapter<RecyclerPainti
 
     @Override
     public void onBindViewHolder(PrintingViewHolder holder, int position) {
-        holder.onBind(printingList.get(position));
+        holder.onBind(paintingList.get(position));
     }
 
     @Override
     public int getItemCount() {
-        return printingList.size();
+        return paintingList.size();
     }
 
     public class PrintingViewHolder extends RecyclerView.ViewHolder {
@@ -65,11 +63,15 @@ public class RecyclerPaintingAdapter extends RecyclerView.Adapter<RecyclerPainti
         public void onBind(PaintingModel paintingModel) {
             txtName.setText(paintingModel.getName());
             txtAuthor.setText(paintingModel.getAuthor());
-            txtDetails.setText(paintingModel.getDetails());
-            Glide.with(context)
-                .asBitmap()
-                .load(paintingModel.getImageURL())
-                .into(imgPainting);
+            txtDetails.setText(paintingModel.getPreviewInfo());
+            FirebaseHelper.getInstance()
+                    .getReference(paintingModel.getPhoto())
+                    .getDownloadUrl()
+                    .addOnSuccessListener(uri -> Glide.with(imgPainting.getContext())
+                            .asBitmap()
+                            .load(uri)
+                            .into(imgPainting))
+            .addOnFailureListener(e -> Log.e("Firebase storage:",e.getLocalizedMessage()));
         }
     }
 }

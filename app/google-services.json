@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "629037479549",
+    "firebase_url": "https://recognation-32ebf-default-rtdb.firebaseio.com",
+    "project_id": "recognation-32ebf",
+    "storage_bucket": "recognation-32ebf.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:629037479549:android:931dcae696a2a1409aa314",
+        "android_client_info": {
+          "package_name": "com.test.seeu"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "629037479549-7mm37emevdteh2mfbbbgpm55ojbfjmm8.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.test.seeu",
+            "certificate_hash": "739fda555359bc419ae0d44fd6c5774482a1da56"
+          }
+        },
+        {
+          "client_id": "629037479549-jkoumjr6clva50uul73fqklt27a1d5vp.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAq6_A9kvRjvFSenx-LhHHVwMmm1O1Cgyw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "629037479549-jkoumjr6clva50uul73fqklt27a1d5vp.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
