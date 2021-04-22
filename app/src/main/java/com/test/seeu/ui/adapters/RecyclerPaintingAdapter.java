@@ -1,5 +1,6 @@
 package com.test.seeu.ui.adapters;
 
+import android.content.Intent;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -14,6 +15,8 @@ import com.bumptech.glide.Glide;
 import com.test.seeu.R;
 import com.test.seeu.data.FirebaseHelper;
 import com.test.seeu.data.models.PaintingModel;
+import com.test.seeu.ui.activities.ActivityInfo;
+import com.test.seeu.ui.activities.MainActivity;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -21,6 +24,7 @@ import java.util.List;
 public class RecyclerPaintingAdapter extends RecyclerView.Adapter<RecyclerPaintingAdapter.PrintingViewHolder> {
 
     private List<PaintingModel> paintingList = new ArrayList();
+    public static MainActivity mainActivity;
 
     public void setPaintingList(List<PaintingModel> paintingList) {
         this.paintingList = paintingList;
@@ -56,8 +60,17 @@ public class RecyclerPaintingAdapter extends RecyclerView.Adapter<RecyclerPainti
             super(itemView);
             txtName = itemView.findViewById(R.id.txtName);
             txtAuthor = itemView.findViewById(R.id.txtAuthor);
-            txtDetails = itemView.findViewById(R.id.txtDetails);
-            imgPainting = itemView.findViewById(R.id.imgPainting);
+            txtDetails = itemView.findViewById(R.id.txtPreviewInfo);
+            imgPainting = itemView.findViewById(R.id.imgPhoto);
+
+//            itemView.setOnClickListener(new View.OnClickListener() {
+//
+//                @Override
+//                public void onClick(View view) {
+//                    int positionIndex = getAdapterPosition();
+//                    mainActivity.outputInfo();
+//                }
+//            });
         }
 
         public void onBind(PaintingModel paintingModel) {

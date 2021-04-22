@@ -56,8 +56,8 @@ public class RecyclerArchitectureAdapter extends RecyclerView.Adapter<RecyclerAr
             super(itemView);
             txtName = itemView.findViewById(R.id.txtName);
             txtAuthor = itemView.findViewById(R.id.txtAuthor);
-            txtDetails = itemView.findViewById(R.id.txtDetails);
-            imgPainting = itemView.findViewById(R.id.imgPainting);
+            txtDetails = itemView.findViewById(R.id.txtPreviewInfo);
+            imgPainting = itemView.findViewById(R.id.imgPhoto);
         }
 
         public void onBind(ArchitectureModel architectureModel) {
