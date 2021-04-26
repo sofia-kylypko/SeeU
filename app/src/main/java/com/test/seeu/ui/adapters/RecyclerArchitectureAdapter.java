@@ -1,5 +1,7 @@
 package com.test.seeu.ui.adapters;
 
+import android.content.Context;
+import android.content.Intent;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -14,6 +16,7 @@ import com.bumptech.glide.Glide;
 import com.test.seeu.R;
 import com.test.seeu.data.FirebaseHelper;
 import com.test.seeu.data.models.ArchitectureModel;
+import com.test.seeu.ui.activities.ActivityInfo;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -21,6 +24,11 @@ import java.util.List;
 public class RecyclerArchitectureAdapter extends RecyclerView.Adapter<RecyclerArchitectureAdapter.ArchitectureViewHolder> {
 
     private List<ArchitectureModel> architectureList = new ArrayList();
+    private Context architectureContext;
+
+    public RecyclerArchitectureAdapter(Context architectureContext) {
+        this.architectureContext = architectureContext;
+    }
 
     public void setArchitectureList(List<ArchitectureModel> architectureList) {
         this.architectureList = architectureList;
@@ -58,6 +66,20 @@ public class RecyclerArchitectureAdapter extends RecyclerView.Adapter<RecyclerAr
             txtAuthor = itemView.findViewById(R.id.txtAuthor);
             txtDetails = itemView.findViewById(R.id.txtPreviewInfo);
             imgPainting = itemView.findViewById(R.id.imgPhoto);
+
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    int positionIndex = getAdapterPosition();
+                    ArchitectureModel architectureModel = architectureList.get(positionIndex);
+                    Intent intent = new Intent(architectureContext, ActivityInfo.class);
+                    intent.putExtra("image", "image");
+                    intent.putExtra("name", architectureModel.getName());
+                    intent.putExtra("author", architectureModel.getAuthor());
+                    intent.putExtra("info", architectureModel.getMainInfo());
+                    architectureContext.startActivity(intent);
+                }
+            });
         }
 
         public void onBind(ArchitectureModel architectureModel) {

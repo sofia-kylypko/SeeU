@@ -1,6 +1,5 @@
 package com.test.seeu.ui.activities;
 
-import android.content.Intent;
 import android.os.Bundle;
 import androidx.viewpager.widget.ViewPager;
 
@@ -30,9 +29,4 @@ public class MainActivity extends BaseActivity {
         tabLayout = findViewById(R.id.tabLayout);
         tabLayout.setupWithViewPager(containerLay);
     }
-
-//    public void outputInfo() {
-//        Intent intent = new Intent(this.PaintingFragment, ActivityInfo.class);
-//        startActivity(intent);
-//    }
 }

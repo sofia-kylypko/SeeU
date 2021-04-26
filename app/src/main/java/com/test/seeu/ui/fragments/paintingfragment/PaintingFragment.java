@@ -63,7 +63,7 @@ public class PaintingFragment extends BaseFragment {
     }
 
     private void initRecyclerView() {
-        adapterRv = new RecyclerPaintingAdapter();
+        adapterRv = new RecyclerPaintingAdapter(this.getContext());
         recyclerView.setAdapter(adapterRv);
         recyclerView.setLayoutManager(new LinearLayoutManager(this.getContext()));
         listenData();

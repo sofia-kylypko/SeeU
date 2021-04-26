@@ -3,13 +3,10 @@ package com.test.seeu.ui.activities;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
-import android.view.WindowManager;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
 import android.widget.TextView;
-
-import androidx.appcompat.app.AppCompatActivity;
 
 import com.test.seeu.R;
 import com.test.seeu.ui.base.BaseActivity;
@@ -36,8 +33,6 @@ public class SplashActivity extends BaseActivity {
 
         logo.setAnimation(top);
         logoName.setAnimation(bottom);
-
-
 
         new Handler().postDelayed(() -> {
                 startActivity (new Intent (SplashActivity.this, MainActivity.class));
