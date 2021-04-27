@@ -73,7 +73,7 @@ public class RecyclerPaintingAdapter extends RecyclerView.Adapter<RecyclerPainti
                     int positionIndex = getAdapterPosition();
                     PaintingModel paintingModel = paintingList.get(positionIndex);
                     Intent intent = new Intent(paintContext, ActivityInfo.class);
-                    intent.putExtra("image", "image");
+                    intent.putExtra("image", paintingModel.getPhoto());
                     intent.putExtra("name", paintingModel.getName());
                     intent.putExtra("author", paintingModel.getAuthor());
                     intent.putExtra("info", paintingModel.getMainInfo());

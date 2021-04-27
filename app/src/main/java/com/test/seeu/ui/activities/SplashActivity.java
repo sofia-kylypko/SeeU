@@ -16,7 +16,7 @@ public class SplashActivity extends BaseActivity {
     Animation top, bottom;
     ImageView logo;
     TextView logoName;
-   public static  final int DELAY_IN_MILLIS = 3000;
+    public static final int DELAY_IN_MILLIS = 3000;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,10 +26,8 @@ public class SplashActivity extends BaseActivity {
         top = AnimationUtils.loadAnimation(this, R.anim.top);
         bottom = AnimationUtils.loadAnimation(this, R.anim.bottom);
 
-
         logo = findViewById(R.id.logo);
         logoName = findViewById(R.id.logoName);
-
 
         logo.setAnimation(top);
         logoName.setAnimation(bottom);

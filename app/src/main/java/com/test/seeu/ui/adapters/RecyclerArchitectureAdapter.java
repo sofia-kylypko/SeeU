@@ -73,7 +73,7 @@ public class RecyclerArchitectureAdapter extends RecyclerView.Adapter<RecyclerAr
                     int positionIndex = getAdapterPosition();
                     ArchitectureModel architectureModel = architectureList.get(positionIndex);
                     Intent intent = new Intent(architectureContext, ActivityInfo.class);
-                    intent.putExtra("image", "image");
+                    intent.putExtra("image", architectureModel.getPhoto());
                     intent.putExtra("name", architectureModel.getName());
                     intent.putExtra("author", architectureModel.getAuthor());
                     intent.putExtra("info", architectureModel.getMainInfo());

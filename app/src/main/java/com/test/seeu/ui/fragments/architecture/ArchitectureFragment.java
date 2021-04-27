@@ -18,6 +18,7 @@ import com.test.seeu.R;
 import com.test.seeu.data.FirebaseHelper;
 import com.test.seeu.data.models.ArchitectureModel;
 import com.test.seeu.ui.adapters.RecyclerArchitectureAdapter;
+import com.test.seeu.ui.base.BaseActivity;
 import com.test.seeu.ui.base.BaseFragment;
 
 import java.util.ArrayList;

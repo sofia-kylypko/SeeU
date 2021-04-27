@@ -4,11 +4,15 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
 import com.test.seeu.R;
+import com.test.seeu.data.FirebaseHelper;
+import com.test.seeu.ui.base.BaseActivity;
 
 public class ActivityInfo extends AppCompatActivity {
 
@@ -34,12 +38,20 @@ public class ActivityInfo extends AppCompatActivity {
 
         Intent intent = getIntent();
         if(intent != null) {
-//          String image = intent.getStringExtra("image");
+            String image = intent.getStringExtra("image");
             String name = intent.getStringExtra("name");
             String info = intent.getStringExtra("info");
             String author = intent.getStringExtra("author");
 
-//            imageInfo.setText(image);
+            FirebaseHelper.getInstance()
+                    .getReference(image)
+                    .getDownloadUrl()
+                    .addOnSuccessListener(uri -> Glide.with(imageInfo.getContext())
+                            .asBitmap()
+                            .load(uri)
+                            .into(imageInfo))
+                    .addOnFailureListener(e -> Log.e("Firebase storage:",e.getLocalizedMessage()));
+
             nameInfo.setText(name);
             authorInfo.setText(author);
             mainInfo.setText(info);
