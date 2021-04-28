@@ -20,6 +20,7 @@
         android:theme="@style/Theme.SeeU">
         <activity android:name=".camera.Responce"></activity>
         <activity android:name=".camera.CameraActivity" />
+        <activity android:name=".ui.activities.ActivityInfo"></activity>
         <activity
             android:name=".ui.activities.SplashActivity"
             android:screenOrientation="portrait"
@@ -30,9 +31,10 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity
-            android:name=".ui.activities.MainActivity"
-            android:screenOrientation="portrait" />
+        <activity android:name=".ui.activities.MainActivity"
+            android:screenOrientation="portrait">
+
+        </activity>
     </application>
 
 </manifest>

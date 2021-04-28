@@ -44,7 +44,6 @@ public class PaintingFragment extends BaseFragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-
         btnCameraPaint = view.findViewById(R.id.btnCameraArch);
         btnCameraPaint.setOnClickListener(v -> {
             Intent goToCamera = new Intent(getContext(), CameraActivity.class);
@@ -52,6 +51,7 @@ public class PaintingFragment extends BaseFragment {
         });
 
         searchView = view.findViewById(R.id.searchView);
+
         searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
 
             @Override
@@ -65,10 +65,15 @@ public class PaintingFragment extends BaseFragment {
                 return false;
             }
         });
-
         recyclerView = view.findViewById(R.id.PaintingRecyclerView);
         initRecyclerView();
+    }
 
+    private void initRecyclerView() {
+        adapterRv = new RecyclerPaintingAdapter(this.getContext());
+        recyclerView.setAdapter(adapterRv);
+        recyclerView.setLayoutManager(new LinearLayoutManager(this.getContext()));
+        listenData();
     }
 
     private void listenData() {
@@ -85,14 +90,6 @@ public class PaintingFragment extends BaseFragment {
             adapterRv.setPaintingList(paintingList);
         });
     }
-
-    private void initRecyclerView() {
-        adapterRv = new RecyclerPaintingAdapter();
-        recyclerView.setAdapter(adapterRv);
-        recyclerView.setLayoutManager(new LinearLayoutManager(this.getContext()));
-        listenData();
-    }
-
 
     private List<PaintingModel> filter(String query) {
         ArrayList<PaintingModel> temp = new ArrayList<>();

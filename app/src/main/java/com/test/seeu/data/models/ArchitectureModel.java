@@ -19,6 +19,14 @@ public class ArchitectureModel {
         this.mainInfo = mainInfo;
     }
 
+    public String getMainInfo() {
+        return mainInfo;
+    }
+
+    public void setMainInfo(String mainInfo) {
+        this.mainInfo = mainInfo;
+    }
+
     public String getName() {
         return name;
     }
