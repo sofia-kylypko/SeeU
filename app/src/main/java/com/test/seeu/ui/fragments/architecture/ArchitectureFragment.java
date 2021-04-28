@@ -18,12 +18,14 @@ import com.test.seeu.R;
 import com.test.seeu.data.FirebaseHelper;
 import com.test.seeu.data.models.ArchitectureModel;
 import com.test.seeu.ui.adapters.RecyclerArchitectureAdapter;
+import com.test.seeu.ui.base.BaseActivity;
 import com.test.seeu.ui.base.BaseFragment;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class ArchitectureFragment extends BaseFragment {
+
     private ArrayList<ArchitectureModel> architectureList;
     private SearchView searchView2;
     private Button btnCameraArch;
@@ -61,7 +63,6 @@ public class ArchitectureFragment extends BaseFragment {
 
         recyclerViewArch = view.findViewById(R.id.ArchitectureRecyclerView);
         initRecyclerView();
-
     }
 
     private void listenData() {
@@ -80,7 +81,7 @@ public class ArchitectureFragment extends BaseFragment {
     }
 
     private void initRecyclerView() {
-        adapterRvArch = new RecyclerArchitectureAdapter();
+        adapterRvArch = new RecyclerArchitectureAdapter(this.getContext());
         recyclerViewArch.setAdapter(adapterRvArch);
         recyclerViewArch.setLayoutManager(new LinearLayoutManager(this.getContext()));
         listenData();

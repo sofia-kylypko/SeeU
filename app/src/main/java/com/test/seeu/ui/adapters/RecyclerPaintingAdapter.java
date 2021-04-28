@@ -1,5 +1,7 @@
 package com.test.seeu.ui.adapters;
 
+import android.content.Context;
+import android.content.Intent;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -14,6 +16,7 @@ import com.bumptech.glide.Glide;
 import com.test.seeu.R;
 import com.test.seeu.data.FirebaseHelper;
 import com.test.seeu.data.models.PaintingModel;
+import com.test.seeu.ui.activities.ActivityInfo;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -21,7 +24,12 @@ import java.util.List;
 public class RecyclerPaintingAdapter extends RecyclerView.Adapter<RecyclerPaintingAdapter.PrintingViewHolder> {
 
     private List<PaintingModel> paintingList = new ArrayList();
+    private Context paintContext;
 
+    public RecyclerPaintingAdapter(Context paintContext) {
+        this.paintContext = paintContext;
+
+    }
     public void setPaintingList(List<PaintingModel> paintingList) {
         this.paintingList = paintingList;
         notifyDataSetChanged();
@@ -56,8 +64,22 @@ public class RecyclerPaintingAdapter extends RecyclerView.Adapter<RecyclerPainti
             super(itemView);
             txtName = itemView.findViewById(R.id.txtName);
             txtAuthor = itemView.findViewById(R.id.txtAuthor);
-            txtDetails = itemView.findViewById(R.id.txtDetails);
-            imgPainting = itemView.findViewById(R.id.imgPainting);
+            txtDetails = itemView.findViewById(R.id.txtPreviewInfo);
+            imgPainting = itemView.findViewById(R.id.imgPhoto);
+
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    int positionIndex = getAdapterPosition();
+                    PaintingModel paintingModel = paintingList.get(positionIndex);
+                    Intent intent = new Intent(paintContext, ActivityInfo.class);
+                    intent.putExtra("image", paintingModel.getPhoto());
+                    intent.putExtra("name", paintingModel.getName());
+                    intent.putExtra("author", paintingModel.getAuthor());
+                    intent.putExtra("info", paintingModel.getMainInfo());
+                    paintContext.startActivity(intent);
+                }
+            });
         }
 
         public void onBind(PaintingModel paintingModel) {
