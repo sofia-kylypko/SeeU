@@ -32,6 +32,8 @@ public class SplashActivity extends BaseActivity {
         logo.setAnimation(top);
         logoName.setAnimation(bottom);
 
+
+
         new Handler().postDelayed(() -> {
                 startActivity (new Intent (SplashActivity.this, MainActivity.class));
             finish();
