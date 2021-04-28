@@ -65,7 +65,6 @@ public class CameraActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_camera);
         image = findViewById(R.id.imageView);
-        hasCameraPermission();
         chose = findViewById(R.id.chose);
         chose.setOnClickListener(v -> {
             hasCameraPermission();

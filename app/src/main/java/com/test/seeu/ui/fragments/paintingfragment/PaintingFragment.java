@@ -1,5 +1,6 @@
 package com.test.seeu.ui.fragments.paintingfragment;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -15,6 +16,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.firebase.firestore.DocumentChange;
 import com.test.seeu.R;
+import com.test.seeu.camera.CameraActivity;
 import com.test.seeu.data.FirebaseHelper;
 import com.test.seeu.data.models.PaintingModel;
 import com.test.seeu.ui.adapters.RecyclerPaintingAdapter;
@@ -44,6 +46,10 @@ public class PaintingFragment extends BaseFragment {
         super.onViewCreated(view, savedInstanceState);
 
         btnCameraPaint = view.findViewById(R.id.btnCameraArch);
+        btnCameraPaint.setOnClickListener(v -> {
+            Intent goToCamera = new Intent(getContext(), CameraActivity.class);
+            startActivity(goToCamera);
+        });
 
         searchView = view.findViewById(R.id.searchView);
         searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
