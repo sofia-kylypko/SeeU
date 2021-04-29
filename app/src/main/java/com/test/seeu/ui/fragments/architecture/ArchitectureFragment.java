@@ -97,4 +97,5 @@ public class ArchitectureFragment extends BaseFragment {
         }
         return temp;
     }
+
 }

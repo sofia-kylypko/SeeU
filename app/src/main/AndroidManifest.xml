@@ -2,6 +2,14 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.test.seeu">
 
+    <uses-feature android:name="android.hardware.camera.any" />
+
+    <uses-permission android:name="android.permission.CAMERA" />
+
+    <uses-feature
+        android:name="android.hardware.camera"
+        android:required="true" />
+
     <application
         android:name=".AppApplication"
         android:allowBackup="true"
@@ -10,6 +18,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.SeeU">
+        <activity android:name=".camera.Responce"></activity>
+        <activity android:name=".camera.CameraActivity" />
         <activity android:name=".ui.activities.ActivityInfo"></activity>
         <activity
             android:name=".ui.activities.SplashActivity"
@@ -21,9 +31,10 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity
-            android:name=".ui.activities.MainActivity"
-            android:screenOrientation="portrait"></activity>
+        <activity android:name=".ui.activities.MainActivity"
+            android:screenOrientation="portrait">
+
+        </activity>
     </application>
 
 </manifest>
