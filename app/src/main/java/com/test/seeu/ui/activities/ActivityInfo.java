@@ -12,13 +12,12 @@ import android.widget.TextView;
 import com.bumptech.glide.Glide;
 import com.test.seeu.R;
 import com.test.seeu.data.FirebaseHelper;
-import com.test.seeu.ui.base.BaseActivity;
 
 public class ActivityInfo extends AppCompatActivity {
 
-    ImageView imageInfo;
-    TextView nameInfo, authorInfo, mainInfo;
-    Button btnGallery, txtCamera;
+    private ImageView imageInfo;
+    private TextView nameInfo, authorInfo, mainInfo;
+    private Button btnGallery, txtCamera;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

@@ -31,11 +31,14 @@ import com.google.mlkit.vision.label.ImageLabeler;
 import com.google.mlkit.vision.label.ImageLabeling;
 import com.google.mlkit.vision.label.custom.CustomImageLabelerOptions;
 import com.test.seeu.R;
+import com.test.seeu.bottomSheet.AddPhotoBottomDialogFragment;
 
 
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.List;
+
+import static com.test.seeu.bottomSheet.AddPhotoBottomDialogFragment.KAY_INFO;
 
 public class CameraActivity extends AppCompatActivity {
 
@@ -99,6 +102,8 @@ public class CameraActivity extends AppCompatActivity {
             image.setImageBitmap(imageBitmap);
             imageLabelingProcess();
 
+            otdelMet();
+
         }
     }
 
@@ -113,40 +118,38 @@ public class CameraActivity extends AppCompatActivity {
                     @Override
                     public void onSuccess(List<ImageLabel> labels) {
                         times = 0;
-                        Intent intent = new Intent(CameraActivity.this, Responce.class);
                         for (ImageLabel label : labels) {
                             String responce = label.getText();
                             if ((times == 0)) {
                                 if(responce.equals("Kiss")) {
                                     if(label.getConfidence() >= 0.3) {
                                         txt1 = label.getText() + label.getConfidence();
-                                        intent.putExtra("responce", txt1);
                                         times++;
                                     }
                                 } else if(responce.equals("girlwithpeaches")){
                                     if(label.getConfidence() >= 0.5){
                                         txt1 = label.getText() + label.getConfidence();
-                                        intent.putExtra("responce", txt1);
                                         times++;
                                     }else{
-                                        Toast toast = Toast.makeText(CameraActivity.this, "please, try to take better photo", Toast.LENGTH_SHORT);
+                                        Toast toast = Toast.makeText(CameraActivity.this, "Будь ласка, зробіть краще фото / цієї картини не було знайдено", Toast.LENGTH_SHORT);//негативный ответ
                                         toast.show();
                                     }
                                 }else{
                                     if(label.getConfidence() >= 0.75){
+
                                         txt1 = label.getText() + label.getConfidence();
-                                        intent.putExtra("responce", txt1);
                                         times++;
+
+
                                     }else{
 
-                                        Toast toast = Toast.makeText(CameraActivity.this, "please, try to take better photo", Toast.LENGTH_SHORT);
+                                        Toast toast = Toast.makeText(CameraActivity.this, "Будь ласка, зробіть краще фото / цієї картини не було знайдено", Toast.LENGTH_SHORT);//негативный ответ
                                         toast.show();
                                         times++;
                                     }
                                 }
                             }
                         }
-                        startActivity(intent);
                     }
                 })
                 .addOnFailureListener(new OnFailureListener() {
@@ -156,6 +159,14 @@ public class CameraActivity extends AppCompatActivity {
                     }
                 });
 
+    }
+
+    private void otdelMet(){
+        AddPhotoBottomDialogFragment addPhotoBottomDialogFragment = new AddPhotoBottomDialogFragment();//вытягивалка
+        Bundle bundle=new Bundle();
+        bundle.putString(KAY_INFO, txt1);
+        addPhotoBottomDialogFragment.setArguments(bundle);
+        addPhotoBottomDialogFragment.show(getSupportFragmentManager(),"add_photo_dialog_fragment");
     }
 
 
