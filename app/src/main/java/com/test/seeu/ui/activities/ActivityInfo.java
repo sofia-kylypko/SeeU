@@ -18,7 +18,7 @@ public class ActivityInfo extends AppCompatActivity {
 
     ImageView imageInfo;
     TextView nameInfo, authorInfo, mainInfo;
-    Button btnGallery, txtCamera;
+    Button btnGallery, btnCamera;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,6 +32,11 @@ public class ActivityInfo extends AppCompatActivity {
             Intent intent = new Intent(this, MainActivity.class);
             startActivity(intent);
         });
+
+//        btnCamera.setOnClickListener(view -> {
+//            Intent intent = new Intent(this, CameraActivity.class);
+//            startActivity(intent);
+//        });
     }
 
     private void getIntentMain() {
@@ -65,5 +70,6 @@ public class ActivityInfo extends AppCompatActivity {
         mainInfo = findViewById(R.id.mainInfo);
 
         btnGallery = findViewById(R.id.btnGallery);
+        btnCamera = findViewById(R.id.btnCamera);
     }
 }
