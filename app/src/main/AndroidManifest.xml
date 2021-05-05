@@ -18,9 +18,13 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.SeeU">
-        <activity android:name=".camera.Responce"></activity>
+        <activity android:name=".camera.Responce"
+            android:screenOrientation="portrait">
+        </activity>
         <activity android:name=".camera.CameraActivity" />
-        <activity android:name=".ui.activities.ActivityInfo"></activity>
+        <activity android:name=".ui.activities.ActivityInfo"
+            android:screenOrientation="portrait">
+        </activity>
         <activity
             android:name=".ui.activities.SplashActivity"
             android:screenOrientation="portrait"
