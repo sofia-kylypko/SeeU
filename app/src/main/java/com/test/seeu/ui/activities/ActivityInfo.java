@@ -11,7 +11,6 @@ import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.test.seeu.R;
-import com.test.seeu.camera.CameraActivity;
 import com.test.seeu.data.FirebaseHelper;
 import com.test.seeu.ui.base.BaseActivity;
 
@@ -19,7 +18,7 @@ public class ActivityInfo extends AppCompatActivity {
 
     ImageView imageInfo;
     TextView nameInfo, authorInfo, mainInfo;
-    Button btnGallery, btnCamera;
+    Button btnGallery, txtCamera;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,11 +30,6 @@ public class ActivityInfo extends AppCompatActivity {
 
         btnGallery.setOnClickListener(view -> {
             Intent intent = new Intent(this, MainActivity.class);
-            startActivity(intent);
-        });
-
-        btnCamera.setOnClickListener(view -> {
-            Intent intent = new Intent(this, CameraActivity.class);
             startActivity(intent);
         });
     }
@@ -71,6 +65,5 @@ public class ActivityInfo extends AppCompatActivity {
         mainInfo = findViewById(R.id.mainInfo);
 
         btnGallery = findViewById(R.id.btnGallery);
-        btnCamera = findViewById(R.id.btnCamera);
     }
 }

@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ScrollView
+        android:id="@+id/scrollView2"
+        android:layout_width="411dp"
+        android:layout_height="448dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <ImageView
+                android:id="@+id/imageInfo"
+                android:layout_width="match_parent"
+                android:layout_height="250dp"
+                android:layout_marginTop="36dp"
+                app:srcCompat="@drawable/ic_launcher_background" />
+
+            <TextView
+                android:id="@+id/nameInfo"
+                android:layout_width="match_parent"
+                android:layout_height="39dp"
+                android:layout_marginTop="40dp" />
+
+            <TextView
+                android:id="@+id/authorInfo"
+                android:layout_width="match_parent"
+                android:layout_height="38dp"
+                android:layout_marginTop="32dp" />
+
+            <TextView
+                android:id="@+id/mainInfo"
+                android:layout_width="match_parent"
+                android:layout_height="43dp"
+                android:layout_marginTop="36dp" />
+
+            <Button
+                android:id="@+id/button"
+                android:layout_width="226dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="90dp"
+                android:layout_marginRight="90dp"
+                android:text="Button" />
+        </LinearLayout>
+    </ScrollView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
