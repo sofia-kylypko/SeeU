@@ -1,5 +1,6 @@
 package com.test.seeu.ui.fragments.architecture;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -15,6 +16,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.firebase.firestore.DocumentChange;
 import com.test.seeu.R;
+import com.test.seeu.camera.CameraActivity;
 import com.test.seeu.data.FirebaseHelper;
 import com.test.seeu.data.models.ArchitectureModel;
 import com.test.seeu.ui.adapters.RecyclerArchitectureAdapter;
@@ -45,7 +47,10 @@ public class ArchitectureFragment extends BaseFragment {
         super.onViewCreated(view, savedInstanceState);
 
         btnCameraArch = view.findViewById(R.id.btnCameraArch);
-
+        btnCameraArch.setOnClickListener(v -> {
+            Intent goToCamera = new Intent(getContext(), CameraActivity.class);
+            startActivity(goToCamera);
+        });
         searchView2 = view.findViewById(R.id.searchView2);
         searchView2.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
 

@@ -51,6 +51,7 @@ public class CameraActivity extends AppCompatActivity {
     private InputImage imageInput;
     private Bitmap imageBitmap;
 
+
     private int times = 0;
     LocalModel localModel =
             new LocalModel.Builder()
@@ -61,6 +62,7 @@ public class CameraActivity extends AppCompatActivity {
             .build();
     ImageLabeler labeler = ImageLabeling.getClient(customImageLabelerOptions);
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -70,6 +72,7 @@ public class CameraActivity extends AppCompatActivity {
         chose.setOnClickListener(v -> {
             hasCameraPermission();
         });
+
     }
 
     private void hasCameraPermission() {
@@ -84,10 +87,13 @@ public class CameraActivity extends AppCompatActivity {
     private void enableCamera() {
         Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
         startActivityForResult(intent, 100);
+
     }
+
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+
         super.onActivityResult(requestCode, resultCode, data);
         if (requestCode == 100) {
             txt1 = "";
@@ -95,8 +101,10 @@ public class CameraActivity extends AppCompatActivity {
             imageInput = InputImage.fromBitmap(imageBitmap, 90);
             image.setImageBitmap(imageBitmap);
             imageLabelingProcess();
+            txt1="Kiss";
 
             otdelMet();
+
         }
     }
 
@@ -104,7 +112,8 @@ public class CameraActivity extends AppCompatActivity {
         ActivityCompat.requestPermissions(this, CAMERA_PERMISSION, CAMERA_REQUEST_CODE);
     }
 
-    private void imageLabelingProcess() {
+
+    private void imageLabelingProcess() {//не заходит
         labeler.process(imageInput)
                 .addOnSuccessListener(new OnSuccessListener<List<ImageLabel>>() {
                     @Override
@@ -128,10 +137,13 @@ public class CameraActivity extends AppCompatActivity {
                                     }
                                 }else{
                                     if(label.getConfidence() >= 0.75){
+
                                         txt1 = label.getText() + label.getConfidence();
                                         times++;
 
+
                                     }else{
+
                                         Toast toast = Toast.makeText(CameraActivity.this, "Будь ласка, зробіть краще фото / цієї картини не було знайдено", Toast.LENGTH_SHORT);//негативный ответ
                                         toast.show();
                                         times++;
@@ -147,6 +159,7 @@ public class CameraActivity extends AppCompatActivity {
                         txt1 = "fail";
                     }
                 });
+
     }
 
     private void otdelMet(){
@@ -156,4 +169,6 @@ public class CameraActivity extends AppCompatActivity {
         addPhotoBottomDialogFragment.setArguments(bundle);
         addPhotoBottomDialogFragment.show(getSupportFragmentManager(),"add_photo_dialog_fragment");
     }
+
+
 }
