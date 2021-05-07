@@ -1,6 +1,7 @@
 package com.test.seeu.data;
 
 import com.google.firebase.firestore.CollectionReference;
+import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.FirebaseFirestoreSettings;
 import com.google.firebase.storage.FirebaseStorage;
@@ -33,6 +34,12 @@ public class FirebaseHelper implements IDataHelper {
     @Override
     public CollectionReference getData(String a) {
         return db.collection(a);
+    }
+
+    @Override
+    public DocumentReference getDataById(String parent, String key) {
+        return db.collection(parent).document(key);
+
     }
 
     @Override
