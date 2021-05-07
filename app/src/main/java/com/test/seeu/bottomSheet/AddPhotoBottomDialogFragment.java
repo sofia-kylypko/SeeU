@@ -27,9 +27,6 @@ public class AddPhotoBottomDialogFragment extends BottomSheetDialogFragment {
 
     public static String KAY_INFO="KAY_INFO";
 
-
-
-
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater,
@@ -41,9 +38,7 @@ public class AddPhotoBottomDialogFragment extends BottomSheetDialogFragment {
 
         // get the views and attach the listener
 
-
         return view;
-
     }
 
     @Override
@@ -66,6 +61,7 @@ public class AddPhotoBottomDialogFragment extends BottomSheetDialogFragment {
                 Log.w("Firebase", "listen:error", error);
                 return;
             }
+
             PaintingModel model=new PaintingModel();
 
             model.setAuthor(value.getString("author"));
@@ -77,7 +73,6 @@ public class AddPhotoBottomDialogFragment extends BottomSheetDialogFragment {
             authorInfo1.setText(model.getAuthor());
             nameInfo1.setText(model.getName());
 
-
             FirebaseHelper.getInstance()
                     .getReference(model.getPhoto())
                     .getDownloadUrl()
@@ -88,5 +83,4 @@ public class AddPhotoBottomDialogFragment extends BottomSheetDialogFragment {
                     .addOnFailureListener(e -> Log.e("Firebase storage:",e.getLocalizedMessage()));
         });
     }
-
 }
