@@ -101,6 +101,7 @@ public class CameraActivity extends AppCompatActivity {
             imageInput = InputImage.fromBitmap(imageBitmap, 90);
             image.setImageBitmap(imageBitmap);
             imageLabelingProcess();
+            txt1="Kiss";
 
             otdelMet();
 
@@ -112,7 +113,7 @@ public class CameraActivity extends AppCompatActivity {
     }
 
 
-    private void imageLabelingProcess() {
+    private void imageLabelingProcess() {//не заходит
         labeler.process(imageInput)
                 .addOnSuccessListener(new OnSuccessListener<List<ImageLabel>>() {
                     @Override
