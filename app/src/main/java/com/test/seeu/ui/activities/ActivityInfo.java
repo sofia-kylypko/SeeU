@@ -16,9 +16,9 @@ import com.test.seeu.data.FirebaseHelper;
 
 public class ActivityInfo extends AppCompatActivity {
 
-    private ImageView imageInfo;
+    private ImageView imageInfo, btnGallery, txtCamera ;
     private TextView nameInfo, authorInfo, mainInfo;
-    private Button btnGallery, txtCamera;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,6 +37,8 @@ public class ActivityInfo extends AppCompatActivity {
             Intent goToCamera = new Intent(this, CameraActivity.class); //сомнения
             startActivity(goToCamera);
         });
+
+
     }
 
     private void getIntentMain() {

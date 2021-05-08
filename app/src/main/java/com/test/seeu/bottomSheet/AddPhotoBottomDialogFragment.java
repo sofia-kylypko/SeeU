@@ -1,10 +1,12 @@
 package com.test.seeu.bottomSheet;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -15,6 +17,7 @@ import com.bumptech.glide.Glide;
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment;
 import com.google.firebase.firestore.DocumentChange;
 import com.test.seeu.R;
+import com.test.seeu.camera.CameraActivity;
 import com.test.seeu.data.FirebaseHelper;
 import com.test.seeu.data.models.PaintingModel;
 
@@ -22,9 +25,8 @@ import java.util.ArrayList;
 
 public class AddPhotoBottomDialogFragment extends BottomSheetDialogFragment {
 
-    private ImageView imageInfo1;
+    private ImageView imageInfo1, btnClose;
     private TextView nameInfo1, authorInfo1, mainInfo1;
-
     public static String KAY_INFO="KAY_INFO";
 
     @Nullable
@@ -39,7 +41,9 @@ public class AddPhotoBottomDialogFragment extends BottomSheetDialogFragment {
         // get the views and attach the listener
 
         return view;
+
     }
+
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
@@ -52,7 +56,16 @@ public class AddPhotoBottomDialogFragment extends BottomSheetDialogFragment {
         nameInfo1=view.findViewById(R.id.nameInfo);
         authorInfo1=view.findViewById(R.id.authorInfo);
 
+        btnClose = view.findViewById(R.id.btnClose);
+
+       btnClose.setOnClickListener(v -> {
+            Intent goToCamera = new Intent(this.getContext(), CameraActivity.class);
+            startActivity(goToCamera);
+        });
+
         listenData(key);
+
+
     }
 
     private void listenData(String key) {

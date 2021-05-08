@@ -7,113 +7,80 @@
     android:background="@drawable/light1"
     tools:context=".ui.activities.ActivityInfo">
 
-    <TextView
-        android:id="@+id/textView4"
-        android:layout_width="227dp"
-        android:layout_height="31dp"
-        android:layout_marginTop="12dp"
-        android:text="Детальніша Інформація"
-        android:textColor="#3F51B5"
-        android:textSize="19sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.57"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
 
-    <Button
+    <ImageView
         android:id="@+id/btnGallery"
-        android:layout_width="34dp"
-        android:layout_height="30dp"
-        android:layout_marginTop="12dp"
+        android:layout_width="42dp"
+        android:layout_height="42dp"
+        android:layout_marginTop="28dp"
         android:background="@drawable/nazad"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.042"
+        app:layout_constraintEnd_toStartOf="@+id/txtCamera"
+        app:layout_constraintHorizontal_bias="0.299"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <Button
+    <ImageView
         android:id="@+id/txtCamera"
-        android:layout_width="42dp"
-        android:layout_height="37dp"
-        android:layout_marginTop="4dp"
+        android:layout_width="47dp"
+        android:layout_height="47dp"
+        android:layout_marginTop="24dp"
         android:background="@drawable/photo"
         android:text=""
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.972"
-        app:layout_constraintStart_toEndOf="@+id/textView4"
+        app:layout_constraintHorizontal_bias="0.793"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <ScrollView
         android:id="@+id/scrollView2"
-        android:layout_width="410dp"
-        android:layout_height="685dp"
+        android:layout_width="411dp"
+        android:layout_height="604dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="1.0">
+        app:layout_constraintTop_toBottomOf="@+id/txtCamera">
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="685dp"
+            android:layout_height="1000dp"
             android:orientation="vertical">
 
             <ImageView
                 android:id="@+id/imageInfo"
-                android:layout_width="match_parent"
-                android:layout_height="250dp"
-                android:layout_marginLeft="16dp"
-                android:layout_marginTop="16dp"
-                android:layout_marginRight="16dp"
+                android:layout_width="300dp"
+                android:layout_height="200dp"
+                android:layout_marginLeft="45dp"
+                android:layout_marginTop="150dp"
+                android:layout_marginRight="35dp"
                 app:srcCompat="@drawable/ic_launcher_background" />
 
             <TextView
-                android:id="@+id/textView5"
-                android:layout_width="135dp"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="16dp"
-                android:layout_marginTop="16dp"
-                android:text="Назва:"
-                android:textColor="#5861B8"
-                android:textSize="18sp" />
-
-            <TextView
                 android:id="@+id/nameInfo"
-                android:layout_width="376dp"
+                android:layout_width="341dp"
                 android:layout_height="29dp"
-                android:layout_marginLeft="16dp"
+                android:layout_marginLeft="40dp"
                 android:layout_marginTop="16dp"
-                android:layout_marginRight="16dp"
-                android:textColor="#3F51B5" />
-
-            <TextView
-                android:id="@+id/textView6"
-                android:layout_width="134dp"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="16dp"
-                android:layout_marginTop="16dp"
-                android:text="Автор:"
-                android:textColor="#585CB4"
-                android:textSize="18sp" />
+                android:layout_marginRight="40dp"
+                android:textColor="@color/black" />
 
             <TextView
                 android:id="@+id/authorInfo"
-                android:layout_width="376dp"
+                android:layout_width="341dp"
                 android:layout_height="33dp"
-                android:layout_marginLeft="16dp"
+                android:layout_marginLeft="40dp"
                 android:layout_marginTop="16dp"
-                android:layout_marginRight="16dp"
-                android:textColor="#3F51B5" />
+                android:layout_marginRight="40dp"
+                android:textColor="#000000" />
 
             <TextView
                 android:id="@+id/mainInfo"
-                android:layout_width="381dp"
-                android:layout_height="293dp"
-                android:layout_marginLeft="16dp"
+                android:layout_width="321dp"
+                android:layout_height="850dp"
+                android:layout_marginLeft="35dp"
                 android:layout_marginTop="16dp"
-                android:layout_marginRight="16dp"
-                android:textColor="#3F51B5" />
+                android:layout_marginRight="20dp"
+                android:textColor="#000000" />
 
         </LinearLayout>
     </ScrollView>

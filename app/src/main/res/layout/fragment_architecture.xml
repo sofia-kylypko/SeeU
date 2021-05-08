@@ -4,23 +4,24 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#FFFFFF">
+    android:background="@drawable/light1">
 
     <SearchView
         android:id="@+id/searchView2"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
+        android:layout_width="241dp"
+        android:layout_height="43dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
         android:background="#E2EEF6"
         app:layout_constraintEnd_toStartOf="@+id/btnCameraArch"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
     </SearchView>
 
-    <Button
+    <ImageView
         android:id="@+id/btnCameraArch"
         android:layout_width="46dp"
         android:layout_height="46dp"
@@ -33,27 +34,35 @@
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/ArchitectureRecyclerView"
-        android:layout_width="408dp"
-        android:layout_height="642dp"
+        android:layout_width="340dp"
+        android:layout_height="545dp"
         android:background="@drawable/light1"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.333"
+        app:layout_constraintHorizontal_bias="0.492"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="1.0" />
 
-    <TextView
-        android:id="@+id/textView3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:layout_marginBottom="7dp"
-        android:text="<-до картин "
-        android:textColor="#3F51B5"
-        app:layout_constraintBottom_toTopOf="@+id/ArchitectureRecyclerView"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.022"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/searchView2" />
+
+
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        tools:layout_editor_absoluteX="350dp"
+        tools:layout_editor_absoluteY="145dp">
+
+
+        <ImageView
+            android:id="@+id/btnImage"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            app:srcCompat="@drawable/site" />
+
+    </LinearLayout>
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>

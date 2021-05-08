@@ -1,12 +1,14 @@
 package com.test.seeu.ui.fragments.architecture;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.SearchView;
 
 import androidx.annotation.NonNull;
@@ -30,7 +32,9 @@ public class ArchitectureFragment extends BaseFragment {
 
     private ArrayList<ArchitectureModel> architectureList;
     private SearchView searchView2;
-    private Button btnCameraArch;
+
+
+    private ImageView btnImage, btnCameraArch;
 
     RecyclerView recyclerViewArch;
     RecyclerArchitectureAdapter adapterRvArch;
@@ -41,6 +45,10 @@ public class ArchitectureFragment extends BaseFragment {
         return inflater.inflate(R.layout.fragment_architecture, container, false);
 
     }
+
+
+
+
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
@@ -53,6 +61,8 @@ public class ArchitectureFragment extends BaseFragment {
         });
         searchView2 = view.findViewById(R.id.searchView2);
         searchView2.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+
+
 
             @Override
             public boolean onQueryTextSubmit(String query) {
@@ -68,7 +78,20 @@ public class ArchitectureFragment extends BaseFragment {
 
         recyclerViewArch = view.findViewById(R.id.ArchitectureRecyclerView);
         initRecyclerView();
+        btnImage = view.findViewById(R.id.btnImage);
+        btnImage.setOnClickListener(v -> {
+
+            goToUrl("https://sofia-kylypko.github.io/ProjectSeeU/");
+        });
     }
+
+    private void goToUrl (String url) {
+        Uri uriUrl = Uri.parse(url);
+        Intent launchBrowser = new Intent(Intent.ACTION_VIEW, uriUrl);
+        startActivity(launchBrowser);
+    }
+
+
 
     private void listenData() {
         FirebaseHelper.getInstance().getData("architecture").addSnapshotListener((value, error) -> {
@@ -93,6 +116,7 @@ public class ArchitectureFragment extends BaseFragment {
     }
 
 
+
     private List<ArchitectureModel> filter(String query) {
         ArrayList<ArchitectureModel> temp = new ArrayList<>();
         for (ArchitectureModel model : architectureList) {
@@ -102,4 +126,6 @@ public class ArchitectureFragment extends BaseFragment {
         }
         return temp;
     }
+
+
 }
