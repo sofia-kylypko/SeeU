@@ -14,7 +14,7 @@
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
-        android:background="#E2EEF6"
+        android:background="#2BAAFF"
         app:layout_constraintEnd_toStartOf="@+id/btnCameraArch"
         app:layout_constraintStart_toEndOf="@+id/btnImage2"
         app:layout_constraintTop_toTopOf="parent" />
