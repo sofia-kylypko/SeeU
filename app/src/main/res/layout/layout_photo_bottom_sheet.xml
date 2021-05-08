@@ -57,7 +57,7 @@
                 android:layout_marginTop="6dp"
                 android:layout_marginRight="40dp"
                 android:text="Автор: "
-                android:textColor="@color/black" />
+                android:textColor="@color/black"  />
 
             <TextView
                 android:id="@+id/mainInfo"

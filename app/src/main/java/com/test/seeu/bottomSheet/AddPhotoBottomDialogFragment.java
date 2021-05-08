@@ -51,6 +51,7 @@ public class AddPhotoBottomDialogFragment extends BottomSheetDialogFragment {
         Bundle bundle=getArguments();
         String key=bundle.getString(KAY_INFO);
 
+
         mainInfo1=view.findViewById(R.id.mainInfo);
         imageInfo1=view.findViewById(R.id.imageInfo);
         nameInfo1=view.findViewById(R.id.nameInfo);
