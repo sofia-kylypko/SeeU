@@ -10,12 +10,13 @@
 
     <ImageView
         android:id="@+id/btnGallery"
-        android:layout_width="42dp"
-        android:layout_height="42dp"
-        android:layout_marginTop="28dp"
+        android:layout_width="47dp"
+        android:layout_height="47dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
         android:background="@drawable/nazad"
         app:layout_constraintEnd_toStartOf="@+id/txtCamera"
-        app:layout_constraintHorizontal_bias="0.299"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -23,18 +24,18 @@
         android:id="@+id/txtCamera"
         android:layout_width="47dp"
         android:layout_height="47dp"
-        android:layout_marginTop="24dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
         android:background="@drawable/photo"
         android:text=""
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.793"
-        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <ScrollView
         android:id="@+id/scrollView2"
-        android:layout_width="411dp"
-        android:layout_height="604dp"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="16dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
@@ -50,36 +51,34 @@
                 android:id="@+id/imageInfo"
                 android:layout_width="300dp"
                 android:layout_height="200dp"
-                android:layout_marginLeft="45dp"
-                android:layout_marginTop="150dp"
-                android:layout_marginRight="35dp"
+                android:layout_marginLeft="50dp"
                 app:srcCompat="@drawable/ic_launcher_background" />
 
             <TextView
                 android:id="@+id/nameInfo"
-                android:layout_width="341dp"
-                android:layout_height="29dp"
-                android:layout_marginLeft="40dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="50dp"
                 android:layout_marginTop="16dp"
-                android:layout_marginRight="40dp"
+                android:layout_marginRight="50dp"
                 android:textColor="@color/black" />
 
             <TextView
                 android:id="@+id/authorInfo"
-                android:layout_width="341dp"
-                android:layout_height="33dp"
-                android:layout_marginLeft="40dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="50dp"
                 android:layout_marginTop="16dp"
-                android:layout_marginRight="40dp"
+                android:layout_marginRight="50dp"
                 android:textColor="#000000" />
 
             <TextView
                 android:id="@+id/mainInfo"
-                android:layout_width="321dp"
-                android:layout_height="850dp"
-                android:layout_marginLeft="35dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="50dp"
                 android:layout_marginTop="16dp"
-                android:layout_marginRight="20dp"
+                android:layout_marginRight="50dp"
                 android:textColor="#000000" />
 
         </LinearLayout>
