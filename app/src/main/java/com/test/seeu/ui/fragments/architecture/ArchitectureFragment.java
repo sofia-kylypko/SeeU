@@ -19,6 +19,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.google.firebase.firestore.DocumentChange;
 import com.test.seeu.R;
 import com.test.seeu.camera.CameraActivity;
+import com.test.seeu.camera.CameraArchitecture;
 import com.test.seeu.data.FirebaseHelper;
 import com.test.seeu.data.models.ArchitectureModel;
 import com.test.seeu.ui.adapters.RecyclerArchitectureAdapter;
@@ -56,7 +57,7 @@ public class ArchitectureFragment extends BaseFragment {
 
         btnCameraArch = view.findViewById(R.id.btnCameraArch);
         btnCameraArch.setOnClickListener(v -> {
-            Intent goToCamera = new Intent(getContext(), CameraActivity.class);
+            Intent goToCamera = new Intent(getContext(), CameraArchitecture.class);
             startActivity(goToCamera);
         });
         searchView2 = view.findViewById(R.id.searchView2);
