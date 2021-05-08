@@ -9,7 +9,7 @@
 
     <SearchView
         android:id="@+id/searchView"
-        android:layout_width="281dp"
+        android:layout_width="241dp"
         android:layout_height="43dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
@@ -33,7 +33,7 @@
         app:layout_constraintVertical_bias="0.969"
         />
 
-    <Button
+    <ImageView
         android:id="@+id/btnCameraArch"
         android:layout_width="46dp"
         android:layout_height="44dp"
@@ -41,25 +41,37 @@
         android:layout_marginEnd="8dp"
         android:layout_marginBottom="8dp"
         android:background="@drawable/photo"
-        android:backgroundTint="#FFFFFF"
+
         android:text=""
         app:layout_constraintBottom_toTopOf="@+id/PaintingRecyclerView"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.0" />
 
-    <TextView
-        android:id="@+id/textView7"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="13dp"
-        android:layout_marginBottom="7dp"
-        android:text="до картин->"
-        android:textColor="#3F51B5"
-        app:layout_constraintBottom_toTopOf="@+id/PaintingRecyclerView"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.814"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/searchView" />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        tools:layout_editor_absoluteX="350dp"
+        tools:layout_editor_absoluteY="145dp">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+
+        <ImageView
+            android:id="@+id/btnImage2"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+
+            app:srcCompat="@drawable/site" />
+
+        <TextView
+            android:id="@+id/textView7"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="200dp"
+            android:layout_marginTop="13dp"
+            android:layout_marginBottom="7dp"
+            android:text="до архітектури ->"
+            android:textColor="#3F51B5" />
+    </LinearLayout>
+
+   </androidx.constraintlayout.widget.ConstraintLayout>

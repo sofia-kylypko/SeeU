@@ -25,9 +25,8 @@ import java.util.ArrayList;
 
 public class AddPhotoBottomDialogFragment extends BottomSheetDialogFragment {
 
-    private ImageView imageInfo1;
+    private ImageView imageInfo1, btnClose;
     private TextView nameInfo1, authorInfo1, mainInfo1;
-    private Button btnClose;
     public static String KAY_INFO="KAY_INFO";
 
     @Nullable
@@ -59,10 +58,10 @@ public class AddPhotoBottomDialogFragment extends BottomSheetDialogFragment {
 
         btnClose = view.findViewById(R.id.btnClose);
 
-  /*      btnClose.setOnClickListener(v -> {
-            Intent goToCamera = new Intent(this, CameraActivity.class);
+       btnClose.setOnClickListener(v -> {
+            Intent goToCamera = new Intent(this.getContext(), CameraActivity.class);
             startActivity(goToCamera);
-        });*/
+        });
 
         listenData(key);
 
