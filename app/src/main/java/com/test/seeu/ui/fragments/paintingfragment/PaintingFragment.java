@@ -29,7 +29,7 @@ import java.util.List;
 
 public class PaintingFragment extends BaseFragment {
 
-    private ArrayList<PaintingModel> paintingList;
+    private ArrayList<PaintingModel> paintingList = new ArrayList<>();
     private SearchView searchView;
 
     private ImageView btnImage2, btnCameraPaint;

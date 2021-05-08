@@ -30,7 +30,7 @@ import java.util.List;
 
 public class ArchitectureFragment extends BaseFragment {
 
-    private ArrayList<ArchitectureModel> architectureList;
+    private ArrayList<ArchitectureModel> architectureList = new ArrayList<>();
     private SearchView searchView2;
 
 

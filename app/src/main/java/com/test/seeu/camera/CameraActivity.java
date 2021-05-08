@@ -32,6 +32,7 @@ import com.google.mlkit.vision.label.ImageLabeling;
 import com.google.mlkit.vision.label.custom.CustomImageLabelerOptions;
 import com.test.seeu.R;
 import com.test.seeu.bottomSheet.AddPhotoBottomDialogFragment;
+import com.test.seeu.ui.activities.MainActivity;
 import com.test.seeu.ui.fragments.paintingfragment.PaintingFragment;
 
 
@@ -46,9 +47,9 @@ public class CameraActivity extends AppCompatActivity {
     private static final String[] CAMERA_PERMISSION = new String[]{Manifest.permission.CAMERA};
     private static final int CAMERA_REQUEST_CODE = 10;
 
-    private Button chose;
+
     private String txt1;
-    private ImageView image, back3;
+    private ImageView image, back3, chose;
     private InputImage imageInput;
     private Bitmap imageBitmap;
 
@@ -77,8 +78,9 @@ public class CameraActivity extends AppCompatActivity {
         back3 = findViewById(R.id.back3);
 
         back3.setOnClickListener(v -> {
-            Intent goToCamera = new Intent(this, PaintingFragment.class);
+            Intent goToCamera = new Intent(this, MainActivity.class);
             startActivity(goToCamera);
+            finish();
         });
 
     }
@@ -108,10 +110,8 @@ public class CameraActivity extends AppCompatActivity {
             imageBitmap = (Bitmap) data.getExtras().get("data");
             imageInput = InputImage.fromBitmap(imageBitmap, 90);
             image.setImageBitmap(imageBitmap);
-            imageLabelingProcess();
-            txt1="Kiss";
+            imageLabelingProcess(imageInput);
 
-            otdelMet();
 
         }
     }
@@ -121,44 +121,47 @@ public class CameraActivity extends AppCompatActivity {
     }
 
 
-    private void imageLabelingProcess() {//не заходит
-        labeler.process(imageInput)
+    private void imageLabelingProcess(InputImage image) {
+        labeler.process(image)
                 .addOnSuccessListener(new OnSuccessListener<List<ImageLabel>>() {
                     @Override
                     public void onSuccess(List<ImageLabel> labels) {
                         times = 0;
+
                         for (ImageLabel label : labels) {
                             String responce = label.getText();
                             if ((times == 0)) {
-                                if(responce.equals("Kiss")) {
-                                    if(label.getConfidence() >= 0.3) {
-                                        txt1 = label.getText() + label.getConfidence();
+                                if (responce.equals("Kiss")) {
+                                    if (label.getConfidence() >= 0.3) {
+                                        otdelMet(label.getText());
+
                                         times++;
                                     }
-                                } else if(responce.equals("girlwithpeaches")){
-                                    if(label.getConfidence() >= 0.5){
-                                        txt1 = label.getText() + label.getConfidence();
+                                } else if (responce.equals("girlwithpeaches")) {
+                                    if (label.getConfidence() >= 0.5) {
+                                        otdelMet(label.getText());
+
                                         times++;
-                                    }else{
-                                        Toast toast = Toast.makeText(CameraActivity.this, "Будь ласка, зробіть краще фото / цієї картини не було знайдено", Toast.LENGTH_SHORT);//негативный ответ
+                                    } else {
+                                        Toast toast = Toast.makeText(CameraActivity.this, "please, try to take better photo", Toast.LENGTH_SHORT);
                                         toast.show();
                                     }
-                                }else{
-                                    if(label.getConfidence() >= 0.75){
+                                } else {
+                                    if (label.getConfidence() >= 0.75) {
 
-                                        txt1 = label.getText() + label.getConfidence();
+                                        otdelMet(label.getText());
+
                                         times++;
+                                    } else {
 
-
-                                    }else{
-
-                                        Toast toast = Toast.makeText(CameraActivity.this, "Будь ласка, зробіть краще фото / цієї картини не було знайдено", Toast.LENGTH_SHORT);//негативный ответ
+                                        Toast toast = Toast.makeText(CameraActivity.this, "please, try to take better photo", Toast.LENGTH_SHORT);
                                         toast.show();
                                         times++;
                                     }
                                 }
                             }
                         }
+
                     }
                 })
                 .addOnFailureListener(new OnFailureListener() {
@@ -170,10 +173,10 @@ public class CameraActivity extends AppCompatActivity {
 
     }
 
-    private void otdelMet(){
+    private void otdelMet(String key){
         AddPhotoBottomDialogFragment addPhotoBottomDialogFragment = new AddPhotoBottomDialogFragment();//вытягивалка
         Bundle bundle=new Bundle();
-        bundle.putString(KAY_INFO, txt1);
+        bundle.putString(KAY_INFO, key);
         addPhotoBottomDialogFragment.setArguments(bundle);
         addPhotoBottomDialogFragment.show(getSupportFragmentManager(),"add_photo_dialog_fragment");
     }
