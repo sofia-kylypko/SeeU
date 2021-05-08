@@ -7,7 +7,6 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.SearchView;
 
@@ -31,8 +30,8 @@ public class PaintingFragment extends BaseFragment {
 
     private ArrayList<PaintingModel> paintingList = new ArrayList<>();
     private SearchView searchView;
-
     private ImageView btnImage2, btnCameraPaint;
+
     RecyclerView recyclerView;
     RecyclerPaintingAdapter adapterRv;
 
@@ -53,7 +52,6 @@ public class PaintingFragment extends BaseFragment {
         });
 
         searchView = view.findViewById(R.id.searchView);
-
         searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
 
             @Override
@@ -70,7 +68,7 @@ public class PaintingFragment extends BaseFragment {
         recyclerView = view.findViewById(R.id.PaintingRecyclerView);
         initRecyclerView();
 
-       btnImage2 = view.findViewById(R.id.btnImage2);
+        btnImage2 = view.findViewById(R.id.btnImage2);
         btnImage2.setOnClickListener(v -> {
             goToUrl("https://sofia-kylypko.github.io/ProjectSeeU/");
         });
@@ -81,6 +79,7 @@ public class PaintingFragment extends BaseFragment {
         Intent launchBrowser = new Intent(Intent.ACTION_VIEW, uriUrl);
         startActivity(launchBrowser);
     }
+
     private void initRecyclerView() {
         adapterRv = new RecyclerPaintingAdapter(this.getContext());
         recyclerView.setAdapter(adapterRv);

@@ -19,7 +19,6 @@ public class ActivityInfo extends AppCompatActivity {
     private ImageView imageInfo, btnGallery, txtCamera ;
     private TextView nameInfo, authorInfo, mainInfo;
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -37,8 +36,6 @@ public class ActivityInfo extends AppCompatActivity {
             Intent goToCamera = new Intent(this, CameraActivity.class); //сомнения
             startActivity(goToCamera);
         });
-
-
     }
 
     private void getIntentMain() {
@@ -72,7 +69,6 @@ public class ActivityInfo extends AppCompatActivity {
         mainInfo = findViewById(R.id.mainInfo);
 
         btnGallery = findViewById(R.id.btnGallery);
-
         txtCamera = findViewById(R.id.txtCamera);
     }
 }

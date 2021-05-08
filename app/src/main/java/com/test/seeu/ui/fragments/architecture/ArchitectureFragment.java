@@ -33,8 +33,6 @@ public class ArchitectureFragment extends BaseFragment {
 
     private ArrayList<ArchitectureModel> architectureList = new ArrayList<>();
     private SearchView searchView2;
-
-
     private ImageView btnImage, btnCameraArch;
 
     RecyclerView recyclerViewArch;
@@ -47,10 +45,6 @@ public class ArchitectureFragment extends BaseFragment {
 
     }
 
-
-
-
-
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
@@ -60,10 +54,9 @@ public class ArchitectureFragment extends BaseFragment {
             Intent goToCamera = new Intent(getContext(), CameraArchitecture.class);
             startActivity(goToCamera);
         });
+
         searchView2 = view.findViewById(R.id.searchView2);
         searchView2.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
-
-
 
             @Override
             public boolean onQueryTextSubmit(String query) {
@@ -81,7 +74,6 @@ public class ArchitectureFragment extends BaseFragment {
         initRecyclerView();
         btnImage = view.findViewById(R.id.btnImage);
         btnImage.setOnClickListener(v -> {
-
             goToUrl("https://sofia-kylypko.github.io/ProjectSeeU/");
         });
     }
@@ -91,8 +83,6 @@ public class ArchitectureFragment extends BaseFragment {
         Intent launchBrowser = new Intent(Intent.ACTION_VIEW, uriUrl);
         startActivity(launchBrowser);
     }
-
-
 
     private void listenData() {
         FirebaseHelper.getInstance().getData("architecture").addSnapshotListener((value, error) -> {
@@ -116,8 +106,6 @@ public class ArchitectureFragment extends BaseFragment {
         listenData();
     }
 
-
-
     private List<ArchitectureModel> filter(String query) {
         ArrayList<ArchitectureModel> temp = new ArrayList<>();
         for (ArchitectureModel model : architectureList) {
@@ -127,6 +115,4 @@ public class ArchitectureFragment extends BaseFragment {
         }
         return temp;
     }
-
-
 }

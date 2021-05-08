@@ -6,7 +6,6 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -15,13 +14,10 @@ import androidx.annotation.Nullable;
 
 import com.bumptech.glide.Glide;
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment;
-import com.google.firebase.firestore.DocumentChange;
 import com.test.seeu.R;
 import com.test.seeu.camera.CameraActivity;
 import com.test.seeu.data.FirebaseHelper;
 import com.test.seeu.data.models.PaintingModel;
-
-import java.util.ArrayList;
 
 public class AddPhotoBottomDialogFragment extends BottomSheetDialogFragment {
 
@@ -51,7 +47,6 @@ public class AddPhotoBottomDialogFragment extends BottomSheetDialogFragment {
         Bundle bundle=getArguments();
         String key=bundle.getString(KAY_INFO);
 
-
         mainInfo1=view.findViewById(R.id.mainInfo);
         imageInfo1=view.findViewById(R.id.imageInfo);
         nameInfo1=view.findViewById(R.id.nameInfo);
@@ -65,8 +60,6 @@ public class AddPhotoBottomDialogFragment extends BottomSheetDialogFragment {
         });
 
         listenData(key);
-
-
     }
 
     private void listenData(String key) {

@@ -47,7 +47,6 @@ public class CameraActivity extends AppCompatActivity {
     private static final String[] CAMERA_PERMISSION = new String[]{Manifest.permission.CAMERA};
     private static final int CAMERA_REQUEST_CODE = 10;
 
-
     private String txt1;
     private ImageView image, back3, chose;
     private InputImage imageInput;
@@ -64,7 +63,6 @@ public class CameraActivity extends AppCompatActivity {
             .build();
     ImageLabeler labeler = ImageLabeling.getClient(customImageLabelerOptions);
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -76,7 +74,6 @@ public class CameraActivity extends AppCompatActivity {
         });
 
         back3 = findViewById(R.id.back3);
-
         back3.setOnClickListener(v -> {
             Intent goToCamera = new Intent(this, MainActivity.class);
             startActivity(goToCamera);
@@ -100,7 +97,6 @@ public class CameraActivity extends AppCompatActivity {
 
     }
 
-
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
 
@@ -111,15 +107,12 @@ public class CameraActivity extends AppCompatActivity {
             imageInput = InputImage.fromBitmap(imageBitmap, 90);
             image.setImageBitmap(imageBitmap);
             imageLabelingProcess(imageInput);
-
-
         }
     }
 
     private void requestPermission() {
         ActivityCompat.requestPermissions(this, CAMERA_PERMISSION, CAMERA_REQUEST_CODE);
     }
-
 
     private void imageLabelingProcess(InputImage image) {
         labeler.process(image)
@@ -170,7 +163,6 @@ public class CameraActivity extends AppCompatActivity {
                         txt1 = "fail";
                     }
                 });
-
     }
 
     private void otdelMet(String key){
@@ -180,6 +172,4 @@ public class CameraActivity extends AppCompatActivity {
         addPhotoBottomDialogFragment.setArguments(bundle);
         addPhotoBottomDialogFragment.show(getSupportFragmentManager(),"add_photo_dialog_fragment");
     }
-
-
 }
