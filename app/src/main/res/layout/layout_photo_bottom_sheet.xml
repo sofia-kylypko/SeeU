@@ -8,12 +8,15 @@
 
     <ScrollView
         android:id="@+id/scrollView2"
-        android:layout_width="427dp"
-        android:layout_height="1000dp"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
         android:background="@drawable/light2"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -42,7 +45,7 @@
             <TextView
                 android:id="@+id/nameInfo"
                 android:layout_width="match_parent"
-                android:layout_height="38dp"
+                android:layout_height="wrap_content"
                 android:layout_marginLeft="40dp"
                 android:layout_marginTop="20dp"
                 android:layout_marginRight="40dp"
@@ -52,17 +55,17 @@
             <TextView
                 android:id="@+id/authorInfo"
                 android:layout_width="match_parent"
-                android:layout_height="38dp"
+                android:layout_height="wrap_content"
                 android:layout_marginLeft="40dp"
                 android:layout_marginTop="6dp"
                 android:layout_marginRight="40dp"
                 android:text="Автор: "
-                android:textColor="@color/black"  />
+                android:textColor="@color/black" />
 
             <TextView
                 android:id="@+id/mainInfo"
                 android:layout_width="match_parent"
-                android:layout_height="1000dp"
+                android:layout_height="wrap_content"
                 android:layout_marginLeft="40dp"
                 android:layout_marginTop="6dp"
                 android:layout_marginRight="40dp"
