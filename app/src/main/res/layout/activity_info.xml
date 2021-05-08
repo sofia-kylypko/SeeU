@@ -7,27 +7,27 @@
     android:background="@drawable/light1"
     tools:context=".ui.activities.ActivityInfo">
 
+
     <ImageView
         android:id="@+id/btnGallery"
-        android:layout_width="34dp"
-        android:layout_height="34dp"
+        android:layout_width="42dp"
+        android:layout_height="42dp"
         android:layout_marginTop="28dp"
         android:background="@drawable/nazad"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.119"
+        app:layout_constraintEnd_toStartOf="@+id/txtCamera"
+        app:layout_constraintHorizontal_bias="0.299"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-
     <ImageView
         android:id="@+id/txtCamera"
-        android:layout_width="42dp"
-        android:layout_height="37dp"
+        android:layout_width="47dp"
+        android:layout_height="47dp"
         android:layout_marginTop="24dp"
         android:background="@drawable/photo"
         android:text=""
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.899"
+        app:layout_constraintHorizontal_bias="0.793"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -39,8 +39,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="1.0">
+        app:layout_constraintTop_toBottomOf="@+id/txtCamera">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -63,7 +62,7 @@
                 android:layout_marginLeft="40dp"
                 android:layout_marginTop="16dp"
                 android:layout_marginRight="40dp"
-                android:textColor="#3F51B5" />
+                android:textColor="@color/black" />
 
             <TextView
                 android:id="@+id/authorInfo"
@@ -72,7 +71,7 @@
                 android:layout_marginLeft="40dp"
                 android:layout_marginTop="16dp"
                 android:layout_marginRight="40dp"
-                android:textColor="#3F51B5" />
+                android:textColor="#000000" />
 
             <TextView
                 android:id="@+id/mainInfo"
@@ -81,7 +80,7 @@
                 android:layout_marginLeft="35dp"
                 android:layout_marginTop="16dp"
                 android:layout_marginRight="20dp"
-                android:textColor="#3F51B5" />
+                android:textColor="#000000" />
 
         </LinearLayout>
     </ScrollView>

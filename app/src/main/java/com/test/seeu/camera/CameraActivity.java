@@ -32,6 +32,7 @@ import com.google.mlkit.vision.label.ImageLabeling;
 import com.google.mlkit.vision.label.custom.CustomImageLabelerOptions;
 import com.test.seeu.R;
 import com.test.seeu.bottomSheet.AddPhotoBottomDialogFragment;
+import com.test.seeu.ui.fragments.paintingfragment.PaintingFragment;
 
 
 import java.io.FileNotFoundException;
@@ -47,7 +48,7 @@ public class CameraActivity extends AppCompatActivity {
 
     private Button chose;
     private String txt1;
-    private ImageView image;
+    private ImageView image, back3;
     private InputImage imageInput;
     private Bitmap imageBitmap;
 
@@ -71,6 +72,13 @@ public class CameraActivity extends AppCompatActivity {
         chose = findViewById(R.id.chose);
         chose.setOnClickListener(v -> {
             hasCameraPermission();
+        });
+
+        back3 = findViewById(R.id.back3);
+
+        back3.setOnClickListener(v -> {
+            Intent goToCamera = new Intent(this, PaintingFragment.class);
+            startActivity(goToCamera);
         });
 
     }
