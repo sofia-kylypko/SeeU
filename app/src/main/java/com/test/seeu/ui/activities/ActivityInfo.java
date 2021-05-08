@@ -37,6 +37,8 @@ public class ActivityInfo extends AppCompatActivity {
             Intent goToCamera = new Intent(this, CameraActivity.class); //сомнения
             startActivity(goToCamera);
         });
+
+
     }
 
     private void getIntentMain() {

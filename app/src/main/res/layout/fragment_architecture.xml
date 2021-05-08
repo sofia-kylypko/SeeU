@@ -4,17 +4,18 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#FFFFFF">
+    android:background="@drawable/light1">
 
     <SearchView
         android:id="@+id/searchView2"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
+        android:layout_width="281dp"
+        android:layout_height="43dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
         android:background="#E2EEF6"
         app:layout_constraintEnd_toStartOf="@+id/btnCameraArch"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
@@ -33,12 +34,12 @@
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/ArchitectureRecyclerView"
-        android:layout_width="408dp"
-        android:layout_height="642dp"
+        android:layout_width="340dp"
+        android:layout_height="545dp"
         android:background="@drawable/light1"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.333"
+        app:layout_constraintHorizontal_bias="0.492"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="1.0" />
@@ -47,13 +48,14 @@
         android:id="@+id/textView3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="13dp"
         android:layout_marginBottom="7dp"
-        android:text="<-до картин "
+        android:text="до архітектури->"
         android:textColor="#3F51B5"
         app:layout_constraintBottom_toTopOf="@+id/ArchitectureRecyclerView"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.022"
+        app:layout_constraintHorizontal_bias="0.795"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/searchView2" />
+        app:layout_constraintTop_toBottomOf="@+id/searchView2"
+        app:layout_constraintVertical_bias="0.461" />
 </androidx.constraintlayout.widget.ConstraintLayout>
