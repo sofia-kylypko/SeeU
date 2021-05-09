@@ -47,7 +47,7 @@ public class CameraActivity extends AppCompatActivity {
     private static final String[] CAMERA_PERMISSION = new String[]{Manifest.permission.CAMERA};
     private static final int CAMERA_REQUEST_CODE = 10;
 
-    private String txt1;
+    public static int I = 0;
     private ImageView image, back3, chose;
     private InputImage imageInput;
     private Bitmap imageBitmap;
@@ -69,7 +69,11 @@ public class CameraActivity extends AppCompatActivity {
         setContentView(R.layout.activity_camera);
         image = findViewById(R.id.imageView);
         chose = findViewById(R.id.chose);
+        if(I == 0){
+            hasCameraPermission();
+        }
         chose.setOnClickListener(v -> {
+            I++;
             hasCameraPermission();
         });
 
@@ -77,6 +81,7 @@ public class CameraActivity extends AppCompatActivity {
         back3.setOnClickListener(v -> {
             Intent goToCamera = new Intent(this, MainActivity.class);
             startActivity(goToCamera);
+            I = 0;
             finish();
         });
 
@@ -94,6 +99,8 @@ public class CameraActivity extends AppCompatActivity {
     private void enableCamera() {
         Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
         startActivityForResult(intent, 100);
+        Toast toast = Toast.makeText(CameraActivity.this, "зробіть фотографію картини, яку хочете розпізнати", Toast.LENGTH_SHORT);
+        toast.show();
 
     }
 
@@ -102,7 +109,7 @@ public class CameraActivity extends AppCompatActivity {
 
         super.onActivityResult(requestCode, resultCode, data);
         if (requestCode == 100) {
-            txt1 = "";
+
             imageBitmap = (Bitmap) data.getExtras().get("data");
             imageInput = InputImage.fromBitmap(imageBitmap, 90);
             image.setImageBitmap(imageBitmap);
@@ -136,7 +143,7 @@ public class CameraActivity extends AppCompatActivity {
 
                                         times++;
                                     } else {
-                                        Toast toast = Toast.makeText(CameraActivity.this, "please, try to take better photo", Toast.LENGTH_SHORT);
+                                        Toast toast = Toast.makeText(CameraActivity.this, "Будь ласка, зробіть краще фото / цієї картини не було знайдено", Toast.LENGTH_SHORT);
                                         toast.show();
                                     }
                                 } else {
@@ -147,7 +154,7 @@ public class CameraActivity extends AppCompatActivity {
                                         times++;
                                     } else {
 
-                                        Toast toast = Toast.makeText(CameraActivity.this, "please, try to take better photo", Toast.LENGTH_SHORT);
+                                        Toast toast = Toast.makeText(CameraActivity.this, "Будь ласка, зробіть краще фото / цієї картини не було знайдено", Toast.LENGTH_SHORT);
                                         toast.show();
                                         times++;
                                     }
@@ -160,7 +167,7 @@ public class CameraActivity extends AppCompatActivity {
                 .addOnFailureListener(new OnFailureListener() {
                     @Override
                     public void onFailure(@NonNull Exception e) {
-                        txt1 = "fail";
+
                     }
                 });
     }
