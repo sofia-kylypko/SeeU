@@ -37,9 +37,7 @@ public class AddPhotoBottomDialogFragment extends BottomSheetDialogFragment {
         // get the views and attach the listener
 
         return view;
-
     }
-
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {

@@ -39,7 +39,6 @@ public class PaintingFragment extends BaseFragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         return inflater.inflate(R.layout.fragment_painting, container, false);
-
     }
 
     @Override
@@ -65,6 +64,7 @@ public class PaintingFragment extends BaseFragment {
                 return false;
             }
         });
+
         recyclerView = view.findViewById(R.id.PaintingRecyclerView);
         initRecyclerView();
 
@@ -93,10 +93,12 @@ public class PaintingFragment extends BaseFragment {
                 Log.w("Firebase", "listen:error", error);
                 return;
             }
+
             ArrayList<PaintingModel> tmp = new ArrayList();
             for (DocumentChange dc : value.getDocumentChanges()) {
                 tmp.add(dc.getDocument().toObject(PaintingModel.class));
             }
+
             paintingList = tmp;
             adapterRv.setPaintingList(paintingList);
         });

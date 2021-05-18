@@ -10,6 +10,7 @@ import com.test.seeu.R;
 import com.test.seeu.ui.activities.MainActivity;
 
 public class CameraArchitecture extends AppCompatActivity {
+    
     private Button goBack;
 
     @Override
@@ -17,10 +18,9 @@ public class CameraArchitecture extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_camera_architecture);
         goBack = findViewById(R.id.button);
-        goBack.setOnClickListener(v->{
+        goBack.setOnClickListener(v -> {
             Intent intent =new  Intent(this, MainActivity.class);
             startActivity(intent);
         });
-
     }
 }

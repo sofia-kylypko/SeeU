@@ -8,8 +8,8 @@
     android:layout_margin="8dp">
 
     <androidx.cardview.widget.CardView
-        android:layout_width="394dp"
-        android:layout_height="258dp"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
         android:background="#E2EEF6"
         app:cardCornerRadius="9dp"
         app:cardElevation="5dp"
@@ -20,63 +20,65 @@
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="274dp"
+            android:layout_height="match_parent"
             android:background="#E2EEF6"
-            android:visibility="visible"
-            >
+            android:visibility="visible">
 
             <ImageView
                 android:id="@+id/imgPhoto"
-                android:layout_width="127dp"
-                android:layout_height="102dp"
-                android:layout_marginLeft="40dp"
-                app:layout_constraintBottom_toBottomOf="parent"
+                android:layout_width="130dp"
+                android:layout_height="115dp"
+                android:layout_marginStart="32dp"
+                android:layout_marginTop="16dp"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.059"
+                app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.102"
                 app:srcCompat="@null" />
 
             <TextView
                 android:id="@+id/txtPreviewInfo"
-                android:layout_width="300dp"
-                android:layout_height="95dp"
-                android:layout_marginStart="16dp"
-                android:layout_marginTop="8dp"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_marginStart="32dp"
+                android:layout_marginTop="16dp"
                 android:layout_marginEnd="16dp"
-                android:layout_marginBottom="8dp"
 
+                android:layout_marginBottom="8dp"
                 android:textColor="@color/black"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.516"
+                app:layout_constraintHorizontal_bias="0.596"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/imgPhoto"
-                app:layout_constraintVertical_bias="0.418" />
+                app:layout_constraintTop_toBottomOf="@+id/imgPhoto" />
 
             <TextView
                 android:id="@+id/txtAuthor"
-                android:layout_width="150dp"
-                android:layout_height="42dp"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
-                android:layout_marginEnd="10dp"
-                android:layout_marginBottom="4dp"
-                android:textColor="@color/black"
-                app:layout_constraintBottom_toBottomOf="@+id/imgPhoto"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.052"
-                app:layout_constraintStart_toEndOf="@+id/imgPhoto" />
-
-            <TextView
-                android:id="@+id/txtName"
-                android:layout_width="150dp"
-                android:layout_height="39dp"
                 android:layout_marginTop="16dp"
                 android:layout_marginEnd="16dp"
                 android:textColor="@color/black"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="@+id/imgPhoto"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.352"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toEndOf="@+id/imgPhoto"
+                app:layout_constraintTop_toBottomOf="@+id/txtName"
+                app:layout_constraintVertical_bias="0.0" />
+
+            <TextView
+                android:id="@+id/txtName"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="16dp"
+                android:textColor="@color/black"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="1.0"
                 app:layout_constraintStart_toEndOf="@+id/imgPhoto"
                 app:layout_constraintTop_toTopOf="parent" />
 
