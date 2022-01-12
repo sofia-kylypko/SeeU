@@ -5,7 +5,6 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
-import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -13,6 +12,8 @@ import com.bumptech.glide.Glide;
 import com.test.seeu.R;
 import com.test.seeu.camera.CameraActivity;
 import com.test.seeu.data.FirebaseHelper;
+
+import java.util.Objects;
 
 public class ActivityInfo extends AppCompatActivity {
 
@@ -54,7 +55,7 @@ public class ActivityInfo extends AppCompatActivity {
                             .asBitmap()
                             .load(uri)
                             .into(imageInfo))
-                    .addOnFailureListener(e -> Log.e("Firebase storage:",e.getLocalizedMessage()));
+                    .addOnFailureListener(e -> Log.e("Firebase storage:", Objects.requireNonNull(e.getLocalizedMessage())));
 
             nameInfo.setText(name);
             authorInfo.setText(author);

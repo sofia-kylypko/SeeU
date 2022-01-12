@@ -19,9 +19,11 @@ import com.test.seeu.camera.CameraActivity;
 import com.test.seeu.data.FirebaseHelper;
 import com.test.seeu.data.models.PaintingModel;
 
+import java.util.Objects;
+
 public class AddPhotoBottomDialogFragment extends BottomSheetDialogFragment {
 
-    private ImageView imageInfo1, btnClose;
+    private ImageView imageInfo1;
     private TextView nameInfo1, authorInfo1, mainInfo1;
     public static String KAY_INFO="KAY_INFO";
 
@@ -31,18 +33,17 @@ public class AddPhotoBottomDialogFragment extends BottomSheetDialogFragment {
                              @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
 
-        View view = inflater.inflate(R.layout.layout_photo_bottom_sheet, container,
-                false);
-
         // get the views and attach the listener
 
-        return view;
+        return inflater.inflate(R.layout.layout_photo_bottom_sheet, container,
+                false);
     }
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         Bundle bundle=getArguments();
+        assert bundle != null;
         String key=bundle.getString(KAY_INFO);
 
         mainInfo1=view.findViewById(R.id.mainInfo);
@@ -50,14 +51,14 @@ public class AddPhotoBottomDialogFragment extends BottomSheetDialogFragment {
         nameInfo1=view.findViewById(R.id.nameInfo);
         authorInfo1=view.findViewById(R.id.authorInfo);
 
-        btnClose = view.findViewById(R.id.btnClose);
+        ImageView btnClose = view.findViewById(R.id.btnClose);
 
        btnClose.setOnClickListener(v -> {
             Intent goToCamera = new Intent(this.getContext(), CameraActivity.class);
             startActivity(goToCamera);
-        });
+       });
 
-        listenData(key);
+       listenData(key);
     }
 
     private void listenData(String key) {
@@ -69,6 +70,7 @@ public class AddPhotoBottomDialogFragment extends BottomSheetDialogFragment {
 
             PaintingModel model=new PaintingModel();
 
+            assert value != null;
             model.setAuthor(value.getString("author"));
             model.setMainInfo(value.getString("mainInfo"));
             model.setName(value.getString("name"));
@@ -81,11 +83,11 @@ public class AddPhotoBottomDialogFragment extends BottomSheetDialogFragment {
             FirebaseHelper.getInstance()
                     .getReference(model.getPhoto())
                     .getDownloadUrl()
-                    .addOnSuccessListener(uri -> Glide.with(getContext())
+                    .addOnSuccessListener(uri -> Glide.with(Objects.requireNonNull(getContext()))
                             .asBitmap()
                             .load(uri)
                             .into(imageInfo1))
-                    .addOnFailureListener(e -> Log.e("Firebase storage:",e.getLocalizedMessage()));
+                    .addOnFailureListener(e -> Log.e("Firebase storage:", Objects.requireNonNull(e.getLocalizedMessage())));
         });
     }
 }

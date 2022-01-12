@@ -2,22 +2,9 @@ package com.test.seeu.data.models;
 
 public class PaintingModel {
 
-    private String name;
-    private String photo;
-    private String author;
-    private String previewInfo;
-    private String mainInfo;
+    private String name, photo, author, previewInfo, mainInfo;
 
-    public PaintingModel() {
-    }
-
-    public PaintingModel(String name, String photo, String author, String previewInfo, String mainInfo) {
-        this.name = name;
-        this.photo = photo;
-        this.author = author;
-        this.previewInfo = previewInfo;
-        this.mainInfo = mainInfo;
-    }
+    public PaintingModel() { }
 
     public String getMainInfo() {
         return mainInfo;
@@ -53,9 +40,5 @@ public class PaintingModel {
 
     public String getPreviewInfo() {
         return previewInfo;
-    }
-
-    public void setPreviewInfo(String previewInfo) {
-        this.previewInfo = previewInfo;
     }
 }

@@ -1,5 +1,6 @@
 package com.test.seeu.ui.adapters;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
 import android.util.Log;
@@ -30,6 +31,7 @@ public class RecyclerArchitectureAdapter extends RecyclerView.Adapter<RecyclerAr
         this.architectureContext = architectureContext;
     }
 
+    @SuppressLint("NotifyDataSetChanged")
     public void setArchitectureList(List<ArchitectureModel> architectureList) {
         this.architectureList = architectureList;
         notifyDataSetChanged();
@@ -55,9 +57,7 @@ public class RecyclerArchitectureAdapter extends RecyclerView.Adapter<RecyclerAr
 
     public class ArchitectureViewHolder extends RecyclerView.ViewHolder {
 
-        private TextView txtName;
-        private TextView txtAuthor;
-        private TextView txtDetails;
+        private TextView txtName, txtAuthor, txtDetails;
         private ImageView imgPainting;
 
         public ArchitectureViewHolder(@NonNull View itemView) {

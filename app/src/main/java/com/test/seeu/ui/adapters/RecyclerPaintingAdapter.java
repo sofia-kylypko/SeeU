@@ -24,7 +24,7 @@ import java.util.List;
 public class RecyclerPaintingAdapter extends RecyclerView.Adapter<RecyclerPaintingAdapter.PrintingViewHolder> {
 
     private List<PaintingModel> paintingList = new ArrayList();
-    private Context paintContext;
+    private final Context paintContext;
 
     public RecyclerPaintingAdapter(Context paintContext) {
         this.paintContext = paintContext;
@@ -55,9 +55,7 @@ public class RecyclerPaintingAdapter extends RecyclerView.Adapter<RecyclerPainti
 
     public class PrintingViewHolder extends RecyclerView.ViewHolder {
 
-        private TextView txtName;
-        private TextView txtAuthor;
-        private TextView txtDetails;
+        private TextView txtName, txtAuthor, txtDetails;
         private ImageView imgPainting;
 
         public PrintingViewHolder(@NonNull View itemView) {

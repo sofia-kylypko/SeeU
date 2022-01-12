@@ -14,19 +14,15 @@ import java.util.Arrays;
 
 public class MainActivity extends BaseActivity {
 
-    private TabLayout tabLayout;
-    private ViewPager containerLay;
-    private MyViewPagerAdapter adapterFragment;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        adapterFragment = new MyViewPagerAdapter(getSupportFragmentManager(), Arrays.asList(new PaintingFragment(), new ArchitectureFragment()));
-        containerLay = findViewById(R.id.containerLay);
+        MyViewPagerAdapter adapterFragment = new MyViewPagerAdapter(getSupportFragmentManager(), Arrays.asList(new PaintingFragment(), new ArchitectureFragment()));
+        ViewPager containerLay = findViewById(R.id.containerLay);
         containerLay.setAdapter(adapterFragment);
-        tabLayout = findViewById(R.id.tabLayout);
+        TabLayout tabLayout = findViewById(R.id.tabLayout);
         tabLayout.setupWithViewPager(containerLay);
     }
 }

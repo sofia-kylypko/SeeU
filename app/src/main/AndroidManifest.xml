@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     package="com.test.seeu">
 
     <uses-feature android:name="android.hardware.camera.any" />
@@ -17,18 +18,20 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.SeeU">
-        <activity android:name=".camera.CameraArchitecture"></activity>
+        android:theme="@style/Theme.SeeU"
+        tools:ignore="AllowBackup">
+        <activity android:name=".camera.CameraArchitecture" />
         <activity
             android:name=".camera.CameraActivity"
             android:theme="@style/Theme.SeeUNoActionBar" />
         <activity
             android:name=".ui.activities.ActivityInfo"
-            android:screenOrientation="portrait" />
+            android:screenOrientation="fullSensor" />
         <activity
             android:name=".ui.activities.SplashActivity"
-            android:screenOrientation="portrait"
-            android:theme="@style/Theme.SeeUNoActionBar">
+            android:screenOrientation="fullSensor"
+            android:theme="@style/Theme.SeeUNoActionBar"
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -37,7 +40,7 @@
         </activity>
         <activity
             android:name=".ui.activities.MainActivity"
-            android:screenOrientation="portrait"></activity>
+            android:screenOrientation="fullSensor" />
     </application>
 
 </manifest>

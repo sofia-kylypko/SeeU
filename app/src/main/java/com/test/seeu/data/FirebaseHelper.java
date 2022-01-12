@@ -8,14 +8,13 @@ import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 
 public class FirebaseHelper implements IDataHelper {
+    
     private static FirebaseHelper instance;
-    private FirebaseFirestore db;
-    private FirebaseStorage firebaseStorage;
-    private StorageReference storageReference;
+    private final FirebaseFirestore db;
+    private final FirebaseStorage firebaseStorage;
 
     private FirebaseHelper() {
         firebaseStorage = FirebaseStorage.getInstance();
-        storageReference = firebaseStorage.getReference();
         db = FirebaseFirestore.getInstance();
         FirebaseFirestoreSettings settings = new FirebaseFirestoreSettings.Builder()
                 .setPersistenceEnabled(true)
@@ -39,7 +38,6 @@ public class FirebaseHelper implements IDataHelper {
     @Override
     public DocumentReference getDataById(String parent, String key) {
         return db.collection(parent).document(key);
-
     }
 
     @Override
