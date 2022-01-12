@@ -58,7 +58,7 @@ public class RecyclerArchitectureAdapter extends RecyclerView.Adapter<RecyclerAr
     public class ArchitectureViewHolder extends RecyclerView.ViewHolder {
 
         private TextView txtName, txtAuthor, txtDetails;
-        private ImageView imgPainting;
+        private final ImageView imgPainting;
 
         public ArchitectureViewHolder(@NonNull View itemView) {
             super(itemView);
